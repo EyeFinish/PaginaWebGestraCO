@@ -152,4 +152,4 @@ window.addEventListener('scroll', () => {
 // ========================================
 // Log de carga completada
 // ========================================
-console.log('GestraCo Landing Page cargada correctamente ✓');
+console.log('GestraCOO Landing Page cargada correctamente ✓');
