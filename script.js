@@ -150,6 +150,34 @@ window.addEventListener('scroll', () => {
 });
 
 // ========================================
+// Features Slider
+// ========================================
+const featuresGrid = document.querySelector('.features-grid');
+const scrollLeftBtn = document.querySelector('.scroll-left');
+const scrollRightBtn = document.querySelector('.scroll-right');
+
+let currentIndex = 0;
+const totalCards = document.querySelectorAll('.feature-card').length;
+
+scrollLeftBtn.addEventListener('click', () => {
+    currentIndex = Math.max(0, currentIndex - 1);
+    scrollToCard(currentIndex);
+});
+
+scrollRightBtn.addEventListener('click', () => {
+    currentIndex = Math.min(totalCards - 1, currentIndex + 1);
+    scrollToCard(currentIndex);
+});
+
+function scrollToCard(index) {
+    const cardWidth = featuresGrid.clientWidth;
+    featuresGrid.scrollTo({
+        left: index * cardWidth,
+        behavior: 'smooth'
+    });
+}
+
+// ========================================
 // Log de carga completada
 // ========================================
 console.log('GestraCOO Landing Page cargada correctamente ✓');

@@ -68,60 +68,101 @@
         <div class="container">
             <h2 class="section-title">Funcionalidades Clave</h2>
             
-            <div class="features-grid">
-                <!-- Tareas de Subcontrato -->
-                <div class="feature-card">
-                    <div class="feature-icon">📋</div>
-                    <h3>Tareas de Subcontrato</h3>
-                    <ul>
-                        <li>Flujo en 5 procesos: Envíos, Comparativo, Negociación, Precalificación, Contrato Firmado</li>
-                        <li>Seguimiento de avance y tareas completadas</li>
-                        <li>Ruta crítica automática (top 15 tareas urgentes)</li>
-                    </ul>
-                </div>
+            <div class="features-container">
+                <button class="scroll-btn scroll-left" aria-label="Anterior">&lt;</button>
+                <div class="features-grid">
+                    <!-- Tareas de Subcontrato -->
+                    <div class="feature-card">
+                        <div class="feature-content">
+                            <div class="feature-icon">📋</div>
+                            <h3>Tareas de Subcontrato</h3>
+                            <ul>
+                                <li>Flujo en 5 procesos: Envíos, Comparativo, Negociación, Precalificación, Contrato Firmado</li>
+                                <li>Seguimiento de avance y tareas completadas</li>
+                            </ul>
+                        </div>
+                        <img src="pantalla subcontratos .png" alt="Vista de tareas de subcontrato" class="feature-image">
+                    </div>
 
-                <!-- Materiales -->
-                <div class="feature-card">
-                    <div class="feature-icon">📦</div>
-                    <h3>Materiales</h3>
-                    <ul>
-                        <li>Flujo en 5 procesos: Cubicación, Rev. Cubicación, Solped, OC Aprobada, Material en Obra</li>
-                        <li>Control independiente por material</li>
-                        <li>Historial de materiales completados</li>
-                    </ul>
-                </div>
+                    <!-- Materiales -->
+                    <div class="feature-card">
+                        <div class="feature-content">
+                            <div class="feature-icon">📦</div>
+                            <h3>Materiales</h3>
+                            <ul>
+                                <li>Flujo en 5 procesos: Cubicación, Rev. Cubicación, Solped, OC Aprobada, Material en Obra</li>
+                                <li>Control independiente por material</li>
+                                <li>Historial de materiales completados</li>
+                            </ul>
+                        </div>
+                        <img src="Pantalla materiales.png" alt="Vista de gestión de materiales" class="feature-image">
+                    </div>
 
-                <!-- Documentos -->
-                <div class="feature-card">
-                    <div class="feature-icon">📄</div>
-                    <h3>Documentos</h3>
-                    <ul>
-                        <li>Carga y gestión de PDFs</li>
-                        <li>Documentos asociados a tareas y materiales</li>
-                        <li>Visualización directa en la plataforma</li>
-                    </ul>
-                </div>
+                    <!-- Documentos -->
+                    <div class="feature-card">
+                        <div class="feature-content">
+                            <div class="feature-icon">📄</div>
+                            <h3>Documentos</h3>
+                            <ul>
+                                <li>Carga y gestión de PDFs</li>
+                                <li>Documentos asociados a tareas y materiales</li>
+                                <li>Visualización directa en la plataforma</li>
+                            </ul>
+                        </div>
+                        <img src="Pantalla documentacion.png" alt="Vista de gestión de documentos" class="feature-image">
+                    </div>
 
-                <!-- Notificaciones -->
-                <div class="feature-card">
-                    <div class="feature-icon">📧</div>
-                    <h3>Notificaciones</h3>
-                    <ul>
-                        <li>Alertas automáticas configurables</li>
-                        <li>Avisos por tareas y materiales próximos a vencer</li>
-                        <li>Vista previa de correos</li>
-                    </ul>
-                </div>
+                    <!-- Progreso -->
+                    <div class="feature-card">
+                        <div class="feature-content">
+                            <div class="feature-icon">📊</div>
+                            <h3>Progreso</h3>
+                            <ul>
+                                <li>Seguimiento en tiempo real de tareas y materiales</li>
+                                <li>Vista clara de completados y pendientes</li>
+                                <li>Indicadores visuales de progreso del proyecto</li>
+                            </ul>
+                        </div>
+                        <img src="pantalla progreso .png" alt="Vista de progreso del proyecto" class="feature-image">
+                    </div>
 
-                <!-- Equipo -->
-                <div class="feature-card">
-                    <div class="feature-icon">👥</div>
-                    <h3>Equipo</h3>
-                    <ul>
-                        <li>Gestión de usuarios</li>
-                        <li>Roles y permisos</li>
-                        <li>Contactos centralizados</li>
-                    </ul>
+                    <!-- Ruta Crítica -->
+                    <div class="feature-card">
+                        <div class="feature-content">
+                            <div class="feature-icon">⚠️</div>
+                            <h3>Ruta Crítica</h3>
+                            <ul>
+                                <li>Visualización de las 15 tareas más urgentes por hacer</li>
+                                <li>Procesos próximos a vencer identificados</li>
+                                <li>Enfoque en cumplimiento de plazos y procesos clave</li>
+                            </ul>
+                        </div>
+                        <img src="pantalla rutacritica.png" alt="Vista de ruta crítica del proyecto" class="feature-image">
+                    </div>
+                </div>
+                <button class="scroll-btn scroll-right" aria-label="Siguiente">&gt;</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Notificaciones Automáticas -->
+    <section id="notificaciones" class="section-dark">
+        <div class="container">
+            <div class="notification-highlight">
+                <div class="notification-demo">
+                    <div class="constructor">👷</div>
+                    <div class="arrow">📲</div>
+                    <div class="phone">
+                        📱
+                        <div class="notif-bubble">¡Alerta de ruta crítica!</div>
+                    </div>
+                </div>
+                <div class="notification-icon"></div>
+                <h2>Notificaciones Automáticas</h2>
+                <div class="notification-features">
+                    <span>✔️ Alertas</span>
+                    <span>✔️ Enfoque en prioridades</span>
+                    <span>✔️ Comunicación eficiente</span>
                 </div>
             </div>
         </div>
