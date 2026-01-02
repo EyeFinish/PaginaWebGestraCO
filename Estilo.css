@@ -695,6 +695,11 @@ footer {
         transform: rotate(45deg) translate(-5px, -6px);
     }
 
+    .hero {
+        text-align: center;
+        padding: 80px 20px 60px;
+    }
+
     .hero h1 {
         font-size: 2.5rem;
     }
@@ -705,6 +710,8 @@ footer {
 
     .hero-description {
         font-size: 1rem;
+        margin-left: auto;
+        margin-right: auto;
     }
 
     .section-title {
