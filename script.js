@@ -178,6 +178,141 @@ function scrollToCard(index) {
 }
 
 // ========================================
+// Modal del Formulario Beta
+// ========================================
+const betaBtn = document.getElementById('beta-btn');
+const betaModal = document.getElementById('beta-modal');
+const modalClose = document.querySelector('.modal-close');
+const betaForm = document.getElementById('beta-form');
+
+// Actualizar código de país cuando se selecciona un país
+document.addEventListener('DOMContentLoaded', () => {
+    const paisSelect = document.getElementById('pais');
+    const countryCode = document.getElementById('country-code');
+    
+    if (paisSelect && countryCode) {
+        paisSelect.addEventListener('change', (e) => {
+            const selectedOption = e.target.options[e.target.selectedIndex];
+            const code = selectedOption.getAttribute('data-code');
+            if (code) {
+                countryCode.textContent = code;
+            }
+        });
+    }
+});
+
+// Abrir modal
+betaBtn.addEventListener('click', () => {
+    betaModal.classList.add('active');
+    document.body.style.overflow = 'hidden';
+});
+
+// Cerrar modal con el botón X
+modalClose.addEventListener('click', () => {
+    betaModal.classList.remove('active');
+    document.body.style.overflow = 'auto';
+});
+
+// Cerrar modal al hacer clic fuera del contenido
+betaModal.addEventListener('click', (e) => {
+    if (e.target === betaModal) {
+        betaModal.classList.remove('active');
+        document.body.style.overflow = 'auto';
+    }
+});
+
+// Cerrar modal con tecla ESC
+document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && betaModal.classList.contains('active')) {
+        betaModal.classList.remove('active');
+        document.body.style.overflow = 'auto';
+    }
+});
+
+// Manejar envío del formulario
+betaForm.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    
+    const submitBtn = betaForm.querySelector('.form-submit-btn');
+    const originalText = submitBtn.textContent;
+    
+    // Deshabilitar botón y mostrar estado de carga
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Enviando...';
+    
+    const nombre = document.getElementById('nombre').value;
+    const correo = document.getElementById('correo').value;
+    const paisSelect = document.getElementById('pais');
+    const pais = paisSelect.value;
+    
+    // Validar que se haya seleccionado un país
+    if (!pais || pais === '') {
+        alert('Por favor, selecciona tu país');
+        submitBtn.disabled = false;
+        submitBtn.textContent = originalText;
+        return;
+    }
+    
+    const codigoPais = paisSelect.options[paisSelect.selectedIndex].getAttribute('data-code');
+    const telefonoInput = document.getElementById('telefono').value;
+    const telefono = codigoPais + ' ' + telefonoInput;
+    const empresa = document.getElementById('empresa').value;
+    
+    // URL de tu Google Apps Script Web App
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbwkyP-kf-QOgA4j4wQ-Jrj9UVnlOcE7dZoOh3AlJLJNEIt9eLKdHVeat41ZyTJkLVfK/exec';
+    
+    const formData = {
+        nombre: nombre,
+        correo: correo,
+        pais: pais,
+        telefono: telefono,
+        empresa: empresa,
+        fecha: new Date().toLocaleString('es-CL')
+    };
+    
+    try {
+        // Enviar datos a Google Sheets
+        const response = await fetch(scriptURL, {
+            method: 'POST',
+            mode: 'no-cors',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(formData)
+        });
+        
+        console.log('Usuario registrado en lista de espera:', formData);
+        
+        // Cerrar modal del formulario
+        betaModal.classList.remove('active');
+        betaForm.reset();
+        
+        // Mostrar modal de éxito
+        const successModal = document.getElementById('success-modal');
+        successModal.classList.add('active');
+        
+    } catch (error) {
+        console.error('Error al enviar datos:', error);
+        alert('Hubo un error al registrarte. Por favor, intenta nuevamente o contáctanos directamente.');
+    } finally {
+        // Restaurar botón
+        submitBtn.disabled = false;
+        submitBtn.textContent = originalText;
+        document.body.style.overflow = 'auto';
+    }
+});
+
+// Cerrar modal de éxito
+const successCloseBtn = document.getElementById('success-close-btn');
+if (successCloseBtn) {
+    successCloseBtn.addEventListener('click', () => {
+        const successModal = document.getElementById('success-modal');
+        successModal.classList.remove('active');
+        document.body.style.overflow = 'auto';
+    });
+}
+
+// ========================================
 // Log de carga completada
 // ========================================
 console.log('GestraCOO Landing Page cargada correctamente ✓');

@@ -45,7 +45,7 @@
                     Más control, mejor planificación y visibilidad en tiempo real.
                 </p>
                 <div class="hero-buttons">
-                    <a href="https://grestra-co.vercel.app/" target="_blank" class="cta-button cta-button-primary fade-in-delay-3">Probar Beta</a>
+                    <button id="beta-btn" class="cta-button cta-button-primary fade-in-delay-3">Probar Beta</button>
                     <a href="#contacto" class="cta-button cta-button-secondary fade-in-delay-3">Solicitar demo</a>
                 </div>
             </div>
@@ -225,6 +225,70 @@
             <p>&copy; 2025 GestraCOO. Todos los derechos reservados.</p>
         </div>
     </footer>
+
+    <!-- Modal del Formulario Beta -->
+    <div id="beta-modal" class="modal">
+        <div class="modal-content">
+            <span class="modal-close">&times;</span>
+            <h2>Lista de Espera - Beta de GestraCOO</h2>
+            <p class="modal-description">Únete a la lista de espera y sé uno de los primeros en probar GestraCOO cuando lancemos la versión beta.</p>
+            <form id="beta-form">
+                <div class="form-group">
+                    <label for="nombre">Nombre completo *</label>
+                    <input type="text" id="nombre" name="nombre" required placeholder="Ingresa tu nombre completo">
+                </div>
+                <div class="form-group">
+                    <label for="correo">Correo electrónico *</label>
+                    <input type="email" id="correo" name="correo" required placeholder="ejemplo@correo.com">
+                </div>
+                <div class="form-group">
+                    <label for="pais">País *</label>
+                    <select id="pais" name="pais" required>
+                        <option value="">Selecciona tu país</option>
+                        <option value="Chile" data-code="+56" selected>Chile (+56)</option>
+                        <option value="Argentina" data-code="+54">Argentina (+54)</option>
+                        <option value="Perú" data-code="+51">Perú (+51)</option>
+                        <option value="Colombia" data-code="+57">Colombia (+57)</option>
+                        <option value="México" data-code="+52">México (+52)</option>
+                        <option value="Brasil" data-code="+55">Brasil (+55)</option>
+                        <option value="Uruguay" data-code="+598">Uruguay (+598)</option>
+                        <option value="Paraguay" data-code="+595">Paraguay (+595)</option>
+                        <option value="Bolivia" data-code="+591">Bolivia (+591)</option>
+                        <option value="Ecuador" data-code="+593">Ecuador (+593)</option>
+                        <option value="Venezuela" data-code="+58">Venezuela (+58)</option>
+                        <option value="España" data-code="+34">España (+34)</option>
+                        <option value="Estados Unidos" data-code="+1">Estados Unidos (+1)</option>
+                        <option value="Otro" data-code="+">Otro</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="telefono">Número de teléfono *</label>
+                    <div class="phone-input-group">
+                        <span id="country-code" class="country-code">+56</span>
+                        <input type="tel" id="telefono" name="telefono" required placeholder="9 1234 5678">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="empresa">Empresa *</label>
+                    <input type="text" id="empresa" name="empresa" required placeholder="Nombre de tu empresa">
+                </div>
+                <button type="submit" class="form-submit-btn">Unirse a la lista de espera</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Modal de Éxito -->
+    <div id="success-modal" class="modal">
+        <div class="modal-content success-content">
+            <div class="success-icon">✔️</div>
+            <h2>¡Registro Exitoso!</h2>
+            <p class="success-message">
+                Gracias por tu interés en GestraCOO. Te hemos agregado a la lista de espera.<br>
+                Te contactaremos pronto cuando lancemos la versión beta.
+            </p>
+            <button id="success-close-btn" class="cta-button cta-button-primary">Entendido</button>
+        </div>
+    </div>
 
     <script src="script.js"></script>
 </body>
