@@ -182,11 +182,12 @@ function scrollToCard(index) {
 // ========================================
 document.addEventListener('DOMContentLoaded', () => {
     const betaBtn = document.getElementById('beta-btn');
+    const demoBtn = document.getElementById('demo-btn');
     const betaModal = document.getElementById('beta-modal');
     const modalClose = document.querySelector('.modal-close');
     const betaForm = document.getElementById('beta-form');
 
-    if (!betaBtn || !betaModal || !modalClose || !betaForm) {
+    if (!betaBtn || !demoBtn || !betaModal || !modalClose || !betaForm) {
         console.error('Elementos del modal no encontrados');
         return;
     }
@@ -207,6 +208,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Abrir modal
     betaBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        betaModal.classList.add('active');
+        document.body.style.overflow = 'hidden';
+    });
+
+    // Abrir modal con el botón de demo
+    demoBtn.addEventListener('click', (e) => {
         e.preventDefault();
         betaModal.classList.add('active');
         document.body.style.overflow = 'hidden';

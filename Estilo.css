@@ -188,8 +188,11 @@ header {
 }
 
 .hero {
-    background: var(--blanco);
-    color: var(--azul-oscuro);
+    background: linear-gradient(rgba(255, 255, 255, 0.7), rgba(31, 58, 90, 0.7)), url('../imagenes/fondohero.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    color: var(--blanco);
     padding: 120px 20px 100px;
     text-align: left;
 }
@@ -198,7 +201,7 @@ header {
     font-size: 3.5rem;
     margin-bottom: 1rem;
     font-weight: 700;
-    color: var(--azul-oscuro);
+    color: var(--blanco);
 }
 
 .hero-co {
@@ -209,8 +212,8 @@ header {
 .hero h2 {
     font-size: 1.8rem;
     margin-bottom: 1.5rem;
-    font-weight: 400;
-    color: var(--azul-oscuro);
+    font-weight: 600;
+    color: var(--blanco);
 }
 
 .hero-description {
@@ -220,7 +223,7 @@ header {
     margin-left: 0;
     margin-right: auto;
     line-height: 1.8;
-    color: var(--texto-oscuro);
+    color: var(--blanco);
 }
 
 .hero-buttons {
@@ -285,7 +288,6 @@ section {
 
 #que-hace {
     background: linear-gradient(135deg, var(--azul-oscuro) 0%, #2c5282 100%);
-    margin-top: 60px;
 }
 
 #que-hace .section-title {
