@@ -412,7 +412,6 @@ header {
 
 .propuesta-content {
     padding-right: 2rem;
-    text-align: right;
 }
 
 .propuesta-label {
@@ -441,12 +440,10 @@ header {
 .propuesta-list li {
     display: flex;
     align-items: center;
-    justify-content: flex-end;
     font-size: 1.2rem;
     color: var(--texto-oscuro);
     margin-bottom: 1.5rem;
     line-height: 1.6;
-    flex-direction: row-reverse;
 }
 
 .propuesta-icon {
@@ -460,7 +457,7 @@ header {
     border-radius: 50%;
     font-weight: 700;
     font-size: 1.1rem;
-    margin-left: 1rem;
+    margin-right: 1rem;
     flex-shrink: 0;
 }
 
