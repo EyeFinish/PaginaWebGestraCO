@@ -46,25 +46,111 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // ========================================
-    // Scroll Animations
+    // Scroll Animations - Sistema Mejorado
     // ========================================
     const observerOptions = {
-        threshold: 0.1,
-        rootMargin: '0px 0px -100px 0px'
+        threshold: 0.15,
+        rootMargin: '0px 0px -80px 0px'
     };
 
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 entry.target.classList.add('visible');
+            } else {
+                entry.target.classList.remove('visible');
             }
         });
     }, observerOptions);
 
+    // Animar títulos de secciones con efecto fade-in-up
+    const sectionTitles = document.querySelectorAll('.section-title, .propuesta-title, .porque-title, .clientes-title, .confianza-title');
+    sectionTitles.forEach(title => {
+        title.classList.add('animate-fade-in-up');
+        observer.observe(title);
+    });
+
+    // Animar contenido de propuesta con slide-in-left
+    const propuestaContent = document.querySelector('.propuesta-content');
+    if (propuestaContent) {
+        propuestaContent.classList.add('animate-slide-in-left');
+        observer.observe(propuestaContent);
+    }
+
+    // Animar imágenes de propuesta con slide-in-right
+    const propuestaImages = document.querySelectorAll('.propuesta-img-wrapper');
+    propuestaImages.forEach((img, index) => {
+        img.classList.add('animate-slide-in-right');
+        img.style.transitionDelay = `${index * 0.15}s`;
+        observer.observe(img);
+    });
+
+    // Animar items de lista con bounce-in
+    const propuestaListItems = document.querySelectorAll('.propuesta-list li');
+    propuestaListItems.forEach((item, index) => {
+        item.classList.add('animate-bounce-in');
+        item.style.transitionDelay = `${index * 0.2}s`;
+        observer.observe(item);
+    });
+
+    // Animar columnas de "Por Qué" con zoom-in
+    const porqueColumns = document.querySelectorAll('.porque-column');
+    porqueColumns.forEach((col, index) => {
+        col.classList.add('animate-zoom-in');
+        col.style.transitionDelay = `${index * 0.2}s`;
+        observer.observe(col);
+    });
+
+    // Animar imagen de "Por Qué" con rotate-in
+    const porqueImage = document.querySelector('.porque-img-wrapper');
+    if (porqueImage) {
+        porqueImage.classList.add('animate-rotate-in');
+        observer.observe(porqueImage);
+    }
+
+    // Animar lista de "Por Qué" con slide-in-left
+    const porqueListItems = document.querySelectorAll('.porque-list li');
+    porqueListItems.forEach((item, index) => {
+        item.classList.add('animate-slide-in-left');
+        item.style.transitionDelay = `${index * 0.1}s`;
+        observer.observe(item);
+    });
+
+    // Animar testimonios con flip-in
+    const testimonioCards = document.querySelectorAll('.testimonio-card');
+    testimonioCards.forEach((card, index) => {
+        card.classList.add('animate-flip-in');
+        card.style.transitionDelay = `${index * 0.05}s`;
+        observer.observe(card);
+    });
+
+    // Animar items de confianza con scale-up
+    const confianzaItems = document.querySelectorAll('.confianza-item');
+    confianzaItems.forEach((item, index) => {
+        item.classList.add('animate-scale-up');
+        item.style.transitionDelay = `${index * 0.15}s`;
+        observer.observe(item);
+    });
+
+    // Animar CTA final con pulse
+    const ctaSection = document.querySelector('.section-cta');
+    if (ctaSection) {
+        ctaSection.classList.add('animate-fade-in-up');
+        observer.observe(ctaSection);
+    }
+
+    // Animar botones con bounce
+    const ctaButtons = document.querySelectorAll('.cta-button');
+    ctaButtons.forEach((btn, index) => {
+        btn.classList.add('animate-bounce-in');
+        btn.style.transitionDelay = `${index * 0.1}s`;
+        observer.observe(btn);
+    });
+
     // Animar tarjetas de funcionalidades
     const featureCards = document.querySelectorAll('.feature-card');
     featureCards.forEach((card, index) => {
-        card.classList.add('animate-on-scroll');
+        card.classList.add('animate-slide-in-up');
         card.style.transitionDelay = `${index * 0.1}s`;
         observer.observe(card);
     });
@@ -72,7 +158,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Animar beneficios
     const benefitItems = document.querySelectorAll('.benefit-item');
     benefitItems.forEach((item, index) => {
-        item.classList.add('animate-on-scroll');
+        item.classList.add('animate-slide-in-up');
         item.style.transitionDelay = `${index * 0.1}s`;
         observer.observe(item);
         });
