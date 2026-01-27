@@ -1,6 +1,8 @@
 // ========================================
 // Preloader
 // ========================================
+console.log('🚀 Script GestraCOO iniciado correctamente');
+
 window.addEventListener('load', () => {
     const preloader = document.getElementById('preloader');
     
@@ -16,166 +18,193 @@ window.addEventListener('load', () => {
 });
 
 // ========================================
-// Menu Mobile Toggle
+// Esperar a que el DOM esté completamente cargado
 // ========================================
-const menuToggle = document.querySelector('.menu-toggle');
-const navMenu = document.querySelector('.nav-menu');
+document.addEventListener('DOMContentLoaded', () => {
+    console.log('✓ DOM cargado - Inicializando componentes');
 
-menuToggle.addEventListener('click', () => {
-    menuToggle.classList.toggle('active');
-    navMenu.classList.toggle('active');
-});
+    // ========================================
+    // Menu Mobile Toggle
+    // ========================================
+    const menuToggle = document.querySelector('.menu-toggle');
+    const navMenu = document.querySelector('.nav-menu');
 
-// Cerrar menú al hacer clic en un enlace
-const navLinks = document.querySelectorAll('.nav-menu a');
-navLinks.forEach(link => {
-    link.addEventListener('click', () => {
-        menuToggle.classList.remove('active');
-        navMenu.classList.remove('active');
-    });
-});
+    if (menuToggle && navMenu) {
+        menuToggle.addEventListener('click', () => {
+            menuToggle.classList.toggle('active');
+            navMenu.classList.toggle('active');
+        });
 
-// ========================================
-// Scroll Animations
-// ========================================
-const observerOptions = {
-    threshold: 0.1,
-    rootMargin: '0px 0px -100px 0px'
-};
-
-const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            entry.target.classList.add('visible');
-        }
-    });
-}, observerOptions);
-
-// Animar tarjetas de funcionalidades
-const featureCards = document.querySelectorAll('.feature-card');
-featureCards.forEach((card, index) => {
-    card.classList.add('animate-on-scroll');
-    card.style.transitionDelay = `${index * 0.1}s`;
-    observer.observe(card);
-});
-
-// Animar beneficios
-const benefitItems = document.querySelectorAll('.benefit-item');
-benefitItems.forEach((item, index) => {
-    item.classList.add('animate-on-scroll');
-    item.style.transitionDelay = `${index * 0.1}s`;
-    observer.observe(item);
-});
-
-// ========================================
-// Smooth Scroll con offset para el nav fijo
-// ========================================
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        const targetId = this.getAttribute('href');
-        
-        if (targetId === '#' || targetId === '#demo-form') {
-            // Si no hay un elemento específico, scroll suave a la sección de contacto
-            const contactSection = document.getElementById('contacto');
-            if (contactSection) {
-                const navHeight = document.querySelector('nav').offsetHeight;
-                const targetPosition = contactSection.offsetTop - navHeight;
-                
-                window.scrollTo({
-                    top: targetPosition,
-                    behavior: 'smooth'
-                });
-            }
-        } else {
-            const target = document.querySelector(targetId);
-            if (target) {
-                const navHeight = document.querySelector('nav').offsetHeight;
-                const targetPosition = target.offsetTop - navHeight;
-                
-                window.scrollTo({
-                    top: targetPosition,
-                    behavior: 'smooth'
-                });
-            }
-        }
-    });
-});
-
-// ========================================
-// Destacar enlace activo en navegación
-// ========================================
-window.addEventListener('scroll', () => {
-    const sections = document.querySelectorAll('section, header');
-    const navHeight = document.querySelector('nav').offsetHeight;
-    
-    let current = '';
-    
-    sections.forEach(section => {
-        const sectionTop = section.offsetTop - navHeight - 100;
-        const sectionHeight = section.clientHeight;
-        
-        if (window.pageYOffset >= sectionTop && 
-            window.pageYOffset < sectionTop + sectionHeight) {
-            current = section.getAttribute('id');
-        }
-    });
-    
-    navLinks.forEach(link => {
-        link.classList.remove('active');
-        if (link.getAttribute('href') === `#${current}`) {
-            link.classList.add('active');
-        }
-    });
-});
-
-// ========================================
-// Cambio de color del nav al hacer scroll
-// ========================================
-let lastScroll = 0;
-const nav = document.querySelector('nav');
-
-window.addEventListener('scroll', () => {
-    const currentScroll = window.pageYOffset;
-    
-    if (currentScroll > 100) {
-        nav.style.backgroundColor = 'rgba(255, 255, 255, 0.95)';
-        nav.style.backdropFilter = 'blur(10px)';
-    } else {
-        nav.style.backgroundColor = 'var(--blanco)';
-        nav.style.backdropFilter = 'none';
+        // Cerrar menú al hacer clic en un enlace
+        const navLinks = document.querySelectorAll('.nav-menu a');
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                menuToggle.classList.remove('active');
+                navMenu.classList.remove('active');
+            });
+        });
     }
-    
-    lastScroll = currentScroll;
-});
 
-// ========================================
-// Features Slider
-// ========================================
-const featuresGrid = document.querySelector('.features-grid');
-const scrollLeftBtn = document.querySelector('.scroll-left');
-const scrollRightBtn = document.querySelector('.scroll-right');
+    // ========================================
+    // Scroll Animations
+    // ========================================
+    const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -100px 0px'
+    };
 
-let currentIndex = 0;
-const totalCards = document.querySelectorAll('.feature-card').length;
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+            }
+        });
+    }, observerOptions);
 
-scrollLeftBtn.addEventListener('click', () => {
-    currentIndex = Math.max(0, currentIndex - 1);
-    scrollToCard(currentIndex);
-});
-
-scrollRightBtn.addEventListener('click', () => {
-    currentIndex = Math.min(totalCards - 1, currentIndex + 1);
-    scrollToCard(currentIndex);
-});
-
-function scrollToCard(index) {
-    const cardWidth = featuresGrid.clientWidth;
-    featuresGrid.scrollTo({
-        left: index * cardWidth,
-        behavior: 'smooth'
+    // Animar tarjetas de funcionalidades
+    const featureCards = document.querySelectorAll('.feature-card');
+    featureCards.forEach((card, index) => {
+        card.classList.add('animate-on-scroll');
+        card.style.transitionDelay = `${index * 0.1}s`;
+        observer.observe(card);
     });
-}
+
+    // Animar beneficios
+    const benefitItems = document.querySelectorAll('.benefit-item');
+    benefitItems.forEach((item, index) => {
+        item.classList.add('animate-on-scroll');
+        item.style.transitionDelay = `${index * 0.1}s`;
+        observer.observe(item);
+        });
+
+    // ========================================
+    // Smooth Scroll con offset para el nav fijo
+    // ========================================
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            const targetId = this.getAttribute('href');
+            
+            // Si es el botón de demo-form, abrir el modal directamente
+            if (targetId === '#demo-form') {
+                const betaModal = document.getElementById('beta-modal');
+                if (betaModal) {
+                    betaModal.classList.add('active');
+                    document.body.style.overflow = 'hidden';
+                    console.log('Modal abierto desde botón CTA final');
+                }
+                return;
+            }
+            
+            if (targetId === '#') {
+                // Si no hay un elemento específico, scroll suave a la sección de contacto
+                const contactSection = document.getElementById('contacto');
+                if (contactSection) {
+                    const navHeight = document.querySelector('nav').offsetHeight;
+                    const targetPosition = contactSection.offsetTop - navHeight;
+                    
+                    window.scrollTo({
+                        top: targetPosition,
+                        behavior: 'smooth'
+                    });
+                }
+            } else {
+                const target = document.querySelector(targetId);
+                if (target) {
+                    const navHeight = document.querySelector('nav').offsetHeight;
+                    const targetPosition = target.offsetTop - navHeight;
+                    
+                    window.scrollTo({
+                        top: targetPosition,
+                        behavior: 'smooth'
+                    });
+                }
+            }
+        });
+    });
+
+    // ========================================
+    // Destacar enlace activo en navegación
+    // ========================================
+    const navLinks = document.querySelectorAll('.nav-menu a');
+    
+    window.addEventListener('scroll', () => {
+        const sections = document.querySelectorAll('section, header');
+        const navHeight = document.querySelector('nav').offsetHeight;
+        
+        let current = '';
+        
+        sections.forEach(section => {
+            const sectionTop = section.offsetTop - navHeight - 100;
+            const sectionHeight = section.clientHeight;
+            
+            if (window.pageYOffset >= sectionTop && 
+                window.pageYOffset < sectionTop + sectionHeight) {
+                current = section.getAttribute('id');
+            }
+        });
+        
+        navLinks.forEach(link => {
+            link.classList.remove('active');
+            if (link.getAttribute('href') === `#${current}`) {
+                link.classList.add('active');
+            }
+        });
+    });
+
+    // ========================================
+    // Cambio de color del nav al hacer scroll
+    // ========================================
+    let lastScroll = 0;
+    const nav = document.querySelector('nav');
+
+    if (nav) {
+        window.addEventListener('scroll', () => {
+            const currentScroll = window.pageYOffset;
+            
+            if (currentScroll > 100) {
+                nav.style.backgroundColor = 'rgba(255, 255, 255, 0.95)';
+                nav.style.backdropFilter = 'blur(10px)';
+            } else {
+                nav.style.backgroundColor = 'var(--blanco)';
+                nav.style.backdropFilter = 'none';
+            }
+            
+            lastScroll = currentScroll;
+        });
+    }
+
+    // ========================================
+    // Features Slider
+    // ========================================
+    const featuresGrid = document.querySelector('.features-grid');
+    const scrollLeftBtn = document.querySelector('.scroll-left');
+    const scrollRightBtn = document.querySelector('.scroll-right');
+
+    if (featuresGrid && scrollLeftBtn && scrollRightBtn) {
+        let currentIndex = 0;
+        const totalCards = document.querySelectorAll('.feature-card').length;
+
+        scrollLeftBtn.addEventListener('click', () => {
+            currentIndex = Math.max(0, currentIndex - 1);
+            scrollToCard(currentIndex);
+        });
+
+        scrollRightBtn.addEventListener('click', () => {
+            currentIndex = Math.min(totalCards - 1, currentIndex + 1);
+            scrollToCard(currentIndex);
+        });
+
+        function scrollToCard(index) {
+            const cardWidth = featuresGrid.clientWidth;
+            featuresGrid.scrollTo({
+                left: index * cardWidth,
+                behavior: 'smooth'
+            });
+        }
+    }
+
+}); // Fin del DOMContentLoaded principal
 
 // ========================================
 // Modal del Formulario Beta
@@ -189,8 +218,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (!betaBtn || !demoBtn || !betaModal || !modalClose || !betaForm) {
         console.error('Elementos del modal no encontrados');
+        console.log('betaBtn:', betaBtn);
+        console.log('demoBtn:', demoBtn);
+        console.log('betaModal:', betaModal);
+        console.log('modalClose:', modalClose);
+        console.log('betaForm:', betaForm);
         return;
     }
+    
+    console.log('Todos los elementos del formulario cargados correctamente ✓');
 
     // Actualizar código de país cuando se selecciona un país
     const paisSelect = document.getElementById('pais');
@@ -206,16 +242,18 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Abrir modal
+    // Abrir modal con botón "Probar Beta"
     betaBtn.addEventListener('click', (e) => {
         e.preventDefault();
+        console.log('Botón Probar Beta clickeado');
         betaModal.classList.add('active');
         document.body.style.overflow = 'hidden';
     });
 
-    // Abrir modal con el botón de demo
+    // Abrir modal con botón "Solicitar Demo"
     demoBtn.addEventListener('click', (e) => {
         e.preventDefault();
+        console.log('Botón Solicitar Demo clickeado');
         betaModal.classList.add('active');
         document.body.style.overflow = 'hidden';
     });
@@ -294,18 +332,23 @@ document.addEventListener('DOMContentLoaded', () => {
                 body: JSON.stringify(formData)
             });
             
-            console.log('Usuario registrado en lista de espera:', formData);
+            console.log('✓ Usuario registrado en lista de espera:', formData);
             
             // Cerrar modal del formulario
             betaModal.classList.remove('active');
             betaForm.reset();
+            
+            // Resetear el código de país al valor por defecto (Chile)
+            if (countryCode) {
+                countryCode.textContent = '+56';
+            }
             
             // Mostrar modal de éxito
             const successModal = document.getElementById('success-modal');
             successModal.classList.add('active');
             
         } catch (error) {
-            console.error('Error al enviar datos:', error);
+            console.error('✗ Error al enviar datos:', error);
             alert('Hubo un error al registrarte. Por favor, intenta nuevamente o contáctanos directamente.');
         } finally {
             // Restaurar botón
