@@ -64,7 +64,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }, observerOptions);
 
     // Animar títulos de secciones con efecto fade-in-up
-    const sectionTitles = document.querySelectorAll('.section-title, .propuesta-title, .porque-title, .clientes-title, .confianza-title');
+    const sectionTitles = document.querySelectorAll('.section-title, .propuesta-title, .porque-title, .clientes-title, .planes-title, .confianza-title');
     sectionTitles.forEach(title => {
         title.classList.add('animate-fade-in-up');
         observer.observe(title);
@@ -130,6 +130,21 @@ document.addEventListener('DOMContentLoaded', () => {
         item.classList.add('animate-scale-up');
         item.style.transitionDelay = `${index * 0.15}s`;
         observer.observe(item);
+    });
+
+    // Animar subtítulo de planes con fade-in
+    const planesSubtitle = document.querySelector('.planes-subtitle');
+    if (planesSubtitle) {
+        planesSubtitle.classList.add('animate-fade-in-up');
+        observer.observe(planesSubtitle);
+    }
+
+    // Animar tarjetas de planes con zoom-in
+    const planCards = document.querySelectorAll('.plan-card');
+    planCards.forEach((card, index) => {
+        card.classList.add('animate-zoom-in');
+        card.style.transitionDelay = `${index * 0.2}s`;
+        observer.observe(card);
     });
 
     // Animar CTA final con pulse
@@ -453,6 +468,36 @@ document.addEventListener('DOMContentLoaded', () => {
             document.body.style.overflow = 'auto';
         });
     }
+
+    // ========================================
+    // Botones de Consultar Plan
+    // ========================================
+    const planButtons = document.querySelectorAll('.plan-btn');
+    
+    planButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            // Abrir el modal de beta (formulario de contacto)
+            if (betaModal) {
+                betaModal.classList.add('active');
+                document.body.style.overflow = 'hidden';
+                
+                // Cambiar el título del modal para consulta de planes
+                const modalTitle = betaModal.querySelector('h2');
+                const modalDescription = betaModal.querySelector('.modal-description');
+                const submitButton = betaModal.querySelector('.form-submit-btn');
+                
+                if (modalTitle) {
+                    modalTitle.textContent = 'Consulta tu Plan GestraCOO';
+                }
+                if (modalDescription) {
+                    modalDescription.textContent = 'Completa el formulario y nos pondremos en contacto contigo para ofrecerte el plan que mejor se adapte a tus necesidades. Todos nuestros planes incluyen 1 mes gratuito de prueba.';
+                }
+                if (submitButton) {
+                    submitButton.textContent = 'Solicitar Información';
+                }
+            }
+        });
+    });
 });
 
 // ========================================
