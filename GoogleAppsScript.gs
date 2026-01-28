@@ -10,7 +10,8 @@
  *    - Columna C: Correo
  *    - Columna D: País
  *    - Columna E: Teléfono
- *    - Columna F: Empresa
+ *    - Columna F: Plan de Interés
+ *    - Columna G: Empresa
  * 
  * 3. En tu Google Sheet, ve a Extensiones > Apps Script
  * 4. Borra el código que viene por defecto
@@ -58,13 +59,14 @@ function doPost(e) {
     var data = JSON.parse(e.postData.contents);
     
     // Agregar nueva fila con los datos en el orden correcto
-    // A: Fecha, B: Nombre, C: Correo, D: País, E: Teléfono, F: Empresa
+    // A: Fecha, B: Nombre, C: Correo, D: País, E: Teléfono, F: Plan, G: Empresa
     sheet.appendRow([
       data.fecha || new Date().toLocaleString('es-CL'),
       data.nombre || '',
       data.correo || '',
       data.pais || '',
       "'" + (data.telefono || ''),  // Apóstrofe al inicio para forzar formato texto
+      data.plan || '',
       data.empresa || ''
     ]);
     
@@ -97,6 +99,7 @@ function testPost() {
         correo: 'juan@ejemplo.com',
         pais: 'Chile',
         telefono: '+56 9 1234 5678',
+        plan: 'Plan Equipo',
         empresa: 'Constructora Ejemplo'
       })
     }

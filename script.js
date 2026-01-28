@@ -312,15 +312,13 @@ document.addEventListener('DOMContentLoaded', () => {
 // ========================================
 document.addEventListener('DOMContentLoaded', () => {
     const betaBtn = document.getElementById('beta-btn');
-    const demoBtn = document.getElementById('demo-btn');
     const betaModal = document.getElementById('beta-modal');
     const modalClose = document.querySelector('.modal-close');
     const betaForm = document.getElementById('beta-form');
 
-    if (!betaBtn || !demoBtn || !betaModal || !modalClose || !betaForm) {
+    if (!betaBtn || !betaModal || !modalClose || !betaForm) {
         console.error('Elementos del modal no encontrados');
         console.log('betaBtn:', betaBtn);
-        console.log('demoBtn:', demoBtn);
         console.log('betaModal:', betaModal);
         console.log('modalClose:', modalClose);
         console.log('betaForm:', betaForm);
@@ -328,6 +326,40 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     
     console.log('Todos los elementos del formulario cargados correctamente ✓');
+
+    // Función para restaurar textos originales del modal (prueba gratis)
+    function restaurarTextosPruebaGratis() {
+        const modalTitle = betaModal.querySelector('h2');
+        const modalDescription = betaModal.querySelector('.modal-description');
+        const submitButton = betaModal.querySelector('.form-submit-btn');
+        
+        if (modalTitle) {
+            modalTitle.textContent = 'Solicita tu Mes Gratis de Prueba';
+        }
+        if (modalDescription) {
+            modalDescription.textContent = 'Nuestro equipo se pondrá en contacto contigo para activar tu mes gratuito de prueba de GestraCOO. Elige el plan que más te interesa.';
+        }
+        if (submitButton) {
+            submitButton.textContent = 'Solicitar mes gratis de prueba';
+        }
+    }
+
+    // Función para cambiar textos a consulta de plan
+    function cambiarTextosConsultaPlan() {
+        const modalTitle = betaModal.querySelector('h2');
+        const modalDescription = betaModal.querySelector('.modal-description');
+        const submitButton = betaModal.querySelector('.form-submit-btn');
+        
+        if (modalTitle) {
+            modalTitle.textContent = 'Consulta tu Plan GestraCOO';
+        }
+        if (modalDescription) {
+            modalDescription.textContent = 'Completa el formulario y nos pondremos en contacto contigo para ofrecerte información detallada del plan que te interesa.';
+        }
+        if (submitButton) {
+            submitButton.textContent = 'Enviar consulta';
+        }
+    }
 
     // Actualizar código de país cuando se selecciona un país
     const paisSelect = document.getElementById('pais');
@@ -343,18 +375,11 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Abrir modal con botón "Probar Beta"
+    // Abrir modal con botón "Solicitar Prueba Gratis"
     betaBtn.addEventListener('click', (e) => {
         e.preventDefault();
-        console.log('Botón Probar Beta clickeado');
-        betaModal.classList.add('active');
-        document.body.style.overflow = 'hidden';
-    });
-
-    // Abrir modal con botón "Solicitar Demo"
-    demoBtn.addEventListener('click', (e) => {
-        e.preventDefault();
-        console.log('Botón Solicitar Demo clickeado');
+        console.log('Botón Solicitar Prueba Gratis clickeado');
+        restaurarTextosPruebaGratis();
         betaModal.classList.add('active');
         document.body.style.overflow = 'hidden';
     });
@@ -408,16 +433,18 @@ document.addEventListener('DOMContentLoaded', () => {
         const codigoPais = paisSelect.options[paisSelect.selectedIndex].getAttribute('data-code');
         const telefonoInput = document.getElementById('telefono').value;
         const telefono = codigoPais + ' ' + telefonoInput;
+        const plan = document.getElementById('plan').value;
         const empresa = document.getElementById('empresa').value;
         
         // URL de tu Google Apps Script Web App
-        const scriptURL = 'https://script.google.com/macros/s/AKfycbwkyP-kf-QOgA4j4wQ-Jrj9UVnlOcE7dZoOh3AlJLJNEIt9eLKdHVeat41ZyTJkLVfK/exec';
+        const scriptURL = 'https://script.google.com/macros/s/AKfycbwWGKQqaVNKsxjMBj4Uo9zIXMJk3EgCiC9uddpWi4Vtu2NUpEm6aJ10H2nUaoLdDnix/exec';
         
         const formData = {
             nombre: nombre,
             correo: correo,
             pais: pais,
             telefono: telefono,
+            plan: plan,
             empresa: empresa,
             fecha: new Date().toLocaleString('es-CL')
         };
@@ -433,7 +460,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 body: JSON.stringify(formData)
             });
             
-            console.log('✓ Usuario registrado en lista de espera:', formData);
+            console.log('✓ Solicitud de mes gratis enviada:', formData);
             
             // Cerrar modal del formulario
             betaModal.classList.remove('active');
@@ -478,23 +505,10 @@ document.addEventListener('DOMContentLoaded', () => {
         button.addEventListener('click', () => {
             // Abrir el modal de beta (formulario de contacto)
             if (betaModal) {
+                // Cambiar los textos del modal para consulta de planes
+                cambiarTextosConsultaPlan();
                 betaModal.classList.add('active');
                 document.body.style.overflow = 'hidden';
-                
-                // Cambiar el título del modal para consulta de planes
-                const modalTitle = betaModal.querySelector('h2');
-                const modalDescription = betaModal.querySelector('.modal-description');
-                const submitButton = betaModal.querySelector('.form-submit-btn');
-                
-                if (modalTitle) {
-                    modalTitle.textContent = 'Consulta tu Plan GestraCOO';
-                }
-                if (modalDescription) {
-                    modalDescription.textContent = 'Completa el formulario y nos pondremos en contacto contigo para ofrecerte el plan que mejor se adapte a tus necesidades. Todos nuestros planes incluyen 1 mes gratuito de prueba.';
-                }
-                if (submitButton) {
-                    submitButton.textContent = 'Solicitar Información';
-                }
             }
         });
     });
