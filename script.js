@@ -28,12 +28,26 @@ document.addEventListener('DOMContentLoaded', () => {
     // ========================================
     const menuToggle = document.querySelector('.menu-toggle');
     const navMenu = document.querySelector('.nav-menu');
+    const navOverlay = document.querySelector('.nav-overlay');
 
     if (menuToggle && navMenu) {
+        // Abrir/cerrar menú con el botón toggle
         menuToggle.addEventListener('click', () => {
             menuToggle.classList.toggle('active');
             navMenu.classList.toggle('active');
+            if (navOverlay) {
+                navOverlay.classList.toggle('active');
+            }
         });
+
+        // Cerrar menú al hacer clic en el overlay
+        if (navOverlay) {
+            navOverlay.addEventListener('click', () => {
+                menuToggle.classList.remove('active');
+                navMenu.classList.remove('active');
+                navOverlay.classList.remove('active');
+            });
+        }
 
         // Cerrar menú al hacer clic en un enlace
         const navLinks = document.querySelectorAll('.nav-menu a');
@@ -41,7 +55,36 @@ document.addEventListener('DOMContentLoaded', () => {
             link.addEventListener('click', () => {
                 menuToggle.classList.remove('active');
                 navMenu.classList.remove('active');
+                if (navOverlay) {
+                    navOverlay.classList.remove('active');
+                }
             });
+        });
+    }
+
+    // ========================================
+    // Botones CTA - Solicitar demo/prueba gratis
+    // ========================================
+    // Botón del header - abre el modal
+    const navDemoBtn = document.getElementById('nav-demo-btn');
+    if (navDemoBtn) {
+        navDemoBtn.addEventListener('click', () => {
+            const betaModal = document.getElementById('beta-modal');
+            if (betaModal) {
+                betaModal.classList.add('active');
+                console.log('Modal abierto desde botón del header');
+            }
+        });
+    }
+
+    // Botón del hero - va a la sección de contacto
+    const heroBtn = document.getElementById('beta-btn');
+    if (heroBtn) {
+        heroBtn.addEventListener('click', () => {
+            const contactSection = document.getElementById('contacto');
+            if (contactSection) {
+                contactSection.scrollIntoView({ behavior: 'smooth' });
+            }
         });
     }
 
