@@ -3543,3 +3543,128 @@ footer {
         width: 20px;
     }
 }
+
+/* ========================================
+   Banner de Cookies
+======================================== */
+.cookie-banner {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(135deg, #1F3A5A 0%, #2d4a6f 100%);
+    color: white;
+    padding: 20px;
+    box-shadow: 0 -4px 20px rgba(0,0,0,0.3);
+    z-index: 10000;
+    display: none;
+    animation: slideUp 0.5s ease-out;
+}
+
+.cookie-banner.show {
+    display: block;
+}
+
+@keyframes slideUp {
+    from {
+        transform: translateY(100%);
+    }
+    to {
+        transform: translateY(0);
+    }
+}
+
+.cookie-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 30px;
+    flex-wrap: wrap;
+}
+
+.cookie-text {
+    flex: 1;
+    min-width: 300px;
+}
+
+.cookie-text p {
+    margin: 0;
+    line-height: 1.6;
+}
+
+.cookie-text p:first-child {
+    font-size: 1.1rem;
+    margin-bottom: 8px;
+}
+
+.cookie-text p:last-child {
+    font-size: 0.95rem;
+    opacity: 0.95;
+}
+
+.cookie-buttons {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.cookie-btn {
+    padding: 12px 28px;
+    border: none;
+    border-radius: 6px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 0.95rem;
+}
+
+.cookie-btn-primary {
+    background: #F28C28;
+    color: white;
+}
+
+.cookie-btn-primary:hover {
+    background: #e07520;
+    transform: translateY(-2px);
+}
+
+.cookie-btn-secondary {
+    background: transparent;
+    color: white;
+    border: 2px solid white;
+}
+
+.cookie-btn-secondary:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.cookie-link {
+    color: #F28C28;
+    text-decoration: underline;
+    font-size: 0.9rem;
+    transition: color 0.3s;
+}
+
+.cookie-link:hover {
+    color: #ffa347;
+}
+
+@media (max-width: 768px) {
+    .cookie-content {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .cookie-buttons {
+        justify-content: center;
+        width: 100%;
+    }
+    
+    .cookie-btn {
+        flex: 1;
+        min-width: 120px;
+    }
+}

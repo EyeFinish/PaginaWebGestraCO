@@ -759,6 +759,118 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 // ========================================
+// Gestión de Cookies
+// ========================================
+(function() {
+    const COOKIE_NAME = 'gestracoo_cookies_accepted';
+    const COOKIE_EXPIRY_DAYS = 365;
+    
+    // Función para establecer una cookie
+    function setCookie(name, value, days) {
+        const date = new Date();
+        date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+        const expires = "expires=" + date.toUTCString();
+        document.cookie = name + "=" + value + ";" + expires + ";path=/;SameSite=Strict";
+    }
+    
+    // Función para obtener una cookie
+    function getCookie(name) {
+        const nameEQ = name + "=";
+        const ca = document.cookie.split(';');
+        for(let i = 0; i < ca.length; i++) {
+            let c = ca[i];
+            while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+            if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+        }
+        return null;
+    }
+    
+    // Función para habilitar Google Analytics
+    function enableAnalytics() {
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'GTM-MRKJZ9FR');
+        console.log('✓ Analytics habilitado');
+    }
+    
+    // Función para deshabilitar Google Analytics
+    function disableAnalytics() {
+        window['ga-disable-GTM-MRKJZ9FR'] = true;
+        console.log('✓ Analytics deshabilitado');
+    }
+    
+    // Mostrar el banner de cookies
+    function showCookieBanner() {
+        const banner = document.getElementById('cookie-banner');
+        if (banner) {
+            banner.classList.add('show');
+            console.log('✓ Banner de cookies mostrado');
+        }
+    }
+    
+    // Ocultar el banner de cookies
+    function hideCookieBanner() {
+        const banner = document.getElementById('cookie-banner');
+        if (banner) {
+            banner.classList.remove('show');
+            console.log('✓ Banner de cookies ocultado');
+        }
+    }
+    
+    // Aceptar cookies
+    function acceptCookies() {
+        setCookie(COOKIE_NAME, 'accepted', COOKIE_EXPIRY_DAYS);
+        enableAnalytics();
+        hideCookieBanner();
+        console.log('✓ Cookies aceptadas');
+    }
+    
+    // Rechazar cookies
+    function rejectCookies() {
+        setCookie(COOKIE_NAME, 'rejected', COOKIE_EXPIRY_DAYS);
+        disableAnalytics();
+        hideCookieBanner();
+        console.log('✓ Cookies rechazadas');
+    }
+    
+    // Inicializar gestión de cookies
+    function initCookieConsent() {
+        const cookieConsent = getCookie(COOKIE_NAME);
+        
+        if (!cookieConsent) {
+            // No hay consentimiento previo, mostrar banner
+            showCookieBanner();
+        } else if (cookieConsent === 'accepted') {
+            // Cookies previamente aceptadas
+            enableAnalytics();
+        } else if (cookieConsent === 'rejected') {
+            // Cookies previamente rechazadas
+            disableAnalytics();
+        }
+        
+        // Configurar event listeners
+        const acceptBtn = document.getElementById('cookie-accept');
+        const rejectBtn = document.getElementById('cookie-reject');
+        
+        if (acceptBtn) {
+            acceptBtn.addEventListener('click', acceptCookies);
+        }
+        
+        if (rejectBtn) {
+            rejectBtn.addEventListener('click', rejectCookies);
+        }
+    }
+    
+    // Inicializar cuando el DOM esté listo
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initCookieConsent);
+    } else {
+        initCookieConsent();
+    }
+})();
+
+// ========================================
 // Log de carga completada
 // ========================================
 console.log('GestraCOO Landing Page cargada correctamente ✓');

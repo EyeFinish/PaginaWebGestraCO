@@ -109,4 +109,19 @@
         <priority>0.6</priority>
     </url>
     
+    <!-- Políticas Legales -->
+    <url>
+        <loc>https://gestracoo.com/politica-cookies.html</loc>
+        <lastmod>2026-01-29</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.3</priority>
+    </url>
+    
+    <url>
+        <loc>https://gestracoo.com/politica-privacidad.html</loc>
+        <lastmod>2026-01-29</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.3</priority>
+    </url>
+    
 </urlset>
