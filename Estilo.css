@@ -348,9 +348,9 @@ header {
 }
 
 .hero {
-    background: linear-gradient(rgba(255, 255, 255, 0.85), rgba(255, 255, 255, 0.85)), url('imagenes/fondohero.png');
+    background: linear-gradient(rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0.6)), url('imagenes/cosntruccion-civil.png');
     background-size: cover;
-    background-position: center;
+    background-position: center top;
     background-repeat: no-repeat;
     background-attachment: fixed;
     color: var(--texto-oscuro);
