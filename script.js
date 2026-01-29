@@ -558,6 +558,207 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 // ========================================
+// Blog Slider
+// ========================================
+document.addEventListener('DOMContentLoaded', () => {
+    const blogTrack = document.querySelector('.blog-track');
+    const blogCards = document.querySelectorAll('.blog-card-slider');
+    const prevBtn = document.querySelector('.blog-prev');
+    const nextBtn = document.querySelector('.blog-next');
+    const dots = document.querySelectorAll('.blog-dot');
+    
+    if (!blogTrack || !blogCards.length) return;
+    
+    let currentIndex = 0;
+    let cardsPerView = 3;
+    const totalCards = blogCards.length;
+    
+    // Calcular cards por vista según ancho de pantalla
+    function updateCardsPerView() {
+        const width = window.innerWidth;
+        if (width <= 768) {
+            cardsPerView = 1;
+        } else if (width <= 992) {
+            cardsPerView = 2;
+        } else {
+            cardsPerView = 3;
+        }
+    }
+    
+    // Actualizar posición del slider
+    function updateSliderPosition() {
+        // Usar el ancho real de la primera tarjeta del DOM
+        const firstCard = blogCards[0];
+        const cardWidth = firstCard.offsetWidth;
+        
+        // Obtener el gap del CSS computado
+        const computedStyle = window.getComputedStyle(blogTrack);
+        const gap = parseInt(computedStyle.gap) || 30;
+        
+        // Calcular desplazamiento: cada índice mueve una tarjeta completa + su gap
+        const offset = -(currentIndex * (cardWidth + gap));
+        blogTrack.style.transform = `translateX(${offset}px)`;
+        
+        // Actualizar dots activos
+        dots.forEach((dot, index) => {
+            dot.classList.toggle('active', index === currentIndex);
+        });
+        
+        // Habilitar/deshabilitar botones
+        if (prevBtn && nextBtn) {
+            prevBtn.disabled = currentIndex === 0;
+            nextBtn.disabled = currentIndex >= totalCards - cardsPerView;
+            
+            prevBtn.style.opacity = currentIndex === 0 ? '0.5' : '1';
+            nextBtn.style.opacity = currentIndex >= totalCards - cardsPerView ? '0.5' : '1';
+        }
+    }
+    
+    // Navegar al siguiente
+    function nextSlide() {
+        const maxIndex = totalCards - cardsPerView;
+        if (currentIndex < maxIndex) {
+            currentIndex++;
+            updateSliderPosition();
+        }
+    }
+    
+    // Navegar al anterior
+    function prevSlide() {
+        if (currentIndex > 0) {
+            currentIndex--;
+            updateSliderPosition();
+        }
+    }
+    
+    // Event listeners para botones
+    if (nextBtn) {
+        nextBtn.addEventListener('click', nextSlide);
+    }
+    
+    if (prevBtn) {
+        prevBtn.addEventListener('click', prevSlide);
+    }
+    
+    // Event listeners para dots
+    dots.forEach((dot, index) => {
+        dot.addEventListener('click', () => {
+            currentIndex = index;
+            updateSliderPosition();
+        });
+    });
+    
+    // Soporte para deslizar con touch/swipe
+    let startX = 0;
+    let isDragging = false;
+    
+    blogTrack.addEventListener('touchstart', (e) => {
+        startX = e.touches[0].clientX;
+        isDragging = true;
+    });
+    
+    blogTrack.addEventListener('touchmove', (e) => {
+        if (!isDragging) return;
+        e.preventDefault();
+    });
+    
+    blogTrack.addEventListener('touchend', (e) => {
+        if (!isDragging) return;
+        
+        const endX = e.changedTouches[0].clientX;
+        const diff = startX - endX;
+        
+        if (Math.abs(diff) > 50) {
+            if (diff > 0) {
+                nextSlide();
+            } else {
+                prevSlide();
+            }
+        }
+        
+        isDragging = false;
+    });
+    
+    // Soporte para arrastrar con mouse
+    blogTrack.addEventListener('mousedown', (e) => {
+        startX = e.clientX;
+        isDragging = true;
+        blogTrack.style.cursor = 'grabbing';
+    });
+    
+    blogTrack.addEventListener('mousemove', (e) => {
+        if (!isDragging) return;
+        e.preventDefault();
+    });
+    
+    blogTrack.addEventListener('mouseup', (e) => {
+        if (!isDragging) return;
+        
+        const endX = e.clientX;
+        const diff = startX - endX;
+        
+        if (Math.abs(diff) > 50) {
+            if (diff > 0) {
+                nextSlide();
+            } else {
+                prevSlide();
+            }
+        }
+        
+        isDragging = false;
+        blogTrack.style.cursor = 'grab';
+    });
+    
+    blogTrack.addEventListener('mouseleave', () => {
+        if (isDragging) {
+            isDragging = false;
+            blogTrack.style.cursor = 'grab';
+        }
+    });
+    
+    // Auto-slide cada 2 segundos
+    let autoSlideInterval = setInterval(() => {
+        if (currentIndex >= totalCards - cardsPerView) {
+            currentIndex = 0;
+        } else {
+            currentIndex++;
+        }
+        updateSliderPosition();
+    }, 2000);
+    
+    // Pausar auto-slide al hover
+    const blogSlider = document.querySelector('.blog-slider');
+    if (blogSlider) {
+        blogSlider.addEventListener('mouseenter', () => {
+            clearInterval(autoSlideInterval);
+        });
+        
+        blogSlider.addEventListener('mouseleave', () => {
+            autoSlideInterval = setInterval(() => {
+                if (currentIndex >= totalCards - cardsPerView) {
+                    currentIndex = 0;
+                } else {
+                    currentIndex++;
+                }
+                updateSliderPosition();
+            }, 2000);
+        });
+    }
+    
+    // Actualizar en resize
+    window.addEventListener('resize', () => {
+        updateCardsPerView();
+        currentIndex = Math.min(currentIndex, totalCards - cardsPerView);
+        updateSliderPosition();
+    });
+    
+    // Inicializar
+    updateCardsPerView();
+    updateSliderPosition();
+    blogTrack.style.cursor = 'grab';
+});
+
+// ========================================
 // Log de carga completada
 // ========================================
 console.log('GestraCOO Landing Page cargada correctamente ✓');
