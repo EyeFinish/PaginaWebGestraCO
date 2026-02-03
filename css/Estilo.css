@@ -158,7 +158,8 @@ body::after {
    Navegación
 ======================================== */
 nav {
-    background-color: var(--blanco);
+    background-color: #FFFFFF;
+    background: #FFFFFF;
     padding: 1rem 0;
     position: fixed;
     width: 100%;
@@ -348,7 +349,7 @@ header {
 }
 
 .hero {
-    background: linear-gradient(rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0.6)), url('imagenes/cosntruccion-civil.png');
+    background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('../imagenes/cosntruccion-civil.png');
     background-size: cover;
     background-position: center top;
     background-repeat: no-repeat;
@@ -389,7 +390,7 @@ header {
     font-size: 4rem;
     margin-bottom: 1.5rem;
     font-weight: 800;
-    color: var(--azul-oscuro);
+    color: var(--blanco);
     line-height: 1.1;
 }
 
@@ -402,7 +403,7 @@ header {
     font-size: 1.6rem;
     margin-bottom: 1.5rem;
     font-weight: 400;
-    color: var(--texto-oscuro);
+    color: var(--blanco);
     line-height: 1.4;
 }
 
@@ -441,7 +442,7 @@ header {
     position: absolute;
     width: 70%;
     border-radius: 12px;
-    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 1);
     overflow: hidden;
     background: white;
 }

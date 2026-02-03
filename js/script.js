@@ -303,19 +303,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const nav = document.querySelector('nav');
 
     if (nav) {
-        window.addEventListener('scroll', () => {
-            const currentScroll = window.pageYOffset;
-            
-            if (currentScroll > 100) {
-                nav.style.backgroundColor = 'rgba(255, 255, 255, 0.95)';
-                nav.style.backdropFilter = 'blur(10px)';
-            } else {
-                nav.style.backgroundColor = 'var(--blanco)';
-                nav.style.backdropFilter = 'none';
-            }
-            
-            lastScroll = currentScroll;
-        });
+        // Mantener siempre el fondo blanco sólido
+        nav.style.backgroundColor = '#FFFFFF';
+        nav.style.backdropFilter = 'none';
     }
 
     // ========================================
