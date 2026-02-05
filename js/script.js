@@ -77,6 +77,18 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    // Botón móvil del header - abre el modal
+    const navDemoBtnMobile = document.getElementById('nav-demo-btn-mobile');
+    if (navDemoBtnMobile) {
+        navDemoBtnMobile.addEventListener('click', () => {
+            const betaModal = document.getElementById('beta-modal');
+            if (betaModal) {
+                betaModal.classList.add('active');
+                console.log('Modal abierto desde botón móvil del header');
+            }
+        });
+    }
+
     // Botón del hero - va a la sección de contacto
     const heroBtn = document.getElementById('beta-btn');
     if (heroBtn) {
