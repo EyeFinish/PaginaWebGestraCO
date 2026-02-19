@@ -3,6 +3,31 @@
 // ========================================
 console.log('🚀 Script GestraCOO iniciado correctamente');
 
+// ========================================
+// Video Overlay - Play/Pause
+// ========================================
+document.addEventListener('DOMContentLoaded', () => {
+    const heroVideo = document.getElementById('heroVideo');
+    const videoOverlay = document.getElementById('videoOverlay');
+
+    if (heroVideo && videoOverlay) {
+        // Click en overlay inicia el video
+        videoOverlay.addEventListener('click', () => {
+            heroVideo.play();
+        });
+
+        // Al reproducir, ocultar overlay
+        heroVideo.addEventListener('play', () => {
+            videoOverlay.classList.add('hidden');
+        });
+
+        // Al pausar, mostrar overlay
+        heroVideo.addEventListener('pause', () => {
+            videoOverlay.classList.remove('hidden');
+        });
+    }
+});
+
 window.addEventListener('load', () => {
     const preloader = document.getElementById('preloader');
     
