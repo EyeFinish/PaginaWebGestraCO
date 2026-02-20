@@ -404,13 +404,13 @@ document.addEventListener('DOMContentLoaded', () => {
         const submitButton = betaModal.querySelector('.form-submit-btn');
         
         if (modalTitle) {
-            modalTitle.textContent = 'Solicita tu Mes Gratis de Prueba';
+            modalTitle.textContent = 'Solicita tus 14 Días Gratis de Prueba';
         }
         if (modalDescription) {
-            modalDescription.textContent = 'Nuestro equipo se pondrá en contacto contigo para activar tu mes gratuito de prueba de GestraCOO. Elige el plan que más te interesa.';
+            modalDescription.textContent = 'Nuestro equipo se pondrá en contacto contigo para activar tus 14 días gratuitos de prueba de GestraCOO. Elige el plan que más te interesa.';
         }
         if (submitButton) {
-            submitButton.textContent = 'Solicitar mes gratis de prueba';
+            submitButton.textContent = 'Solicitar 14 días gratis de prueba';
         }
     }
 
@@ -530,7 +530,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 body: JSON.stringify(formData)
             });
             
-            console.log('✓ Solicitud de mes gratis enviada:', formData);
+            console.log('✓ Solicitud de 14 días gratis enviada:', formData);
             
             // Cerrar modal del formulario
             betaModal.classList.remove('active');
