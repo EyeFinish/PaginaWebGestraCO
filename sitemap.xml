@@ -1,6 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
-        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     
     <!-- Página Principal -->
     <url>
@@ -8,62 +7,6 @@
         <lastmod>2026-02-27</lastmod>
         <changefreq>weekly</changefreq>
         <priority>1.0</priority>
-    </url>
-    
-    <!-- Sección Inicio / Hero -->
-    <url>
-        <loc>https://gestracoo.com/#inicio</loc>
-        <lastmod>2026-02-27</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.9</priority>
-    </url>
-    
-    <!-- Sección Propuesta de Valor -->
-    <url>
-        <loc>https://gestracoo.com/#propuesta</loc>
-        <lastmod>2026-02-27</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.8</priority>
-    </url>
-    
-    <!-- Sección Por Qué GestraCOO -->
-    <url>
-        <loc>https://gestracoo.com/#porque</loc>
-        <lastmod>2026-02-27</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.8</priority>
-    </url>
-    
-    <!-- Sección Testimonios de Clientes -->
-    <url>
-        <loc>https://gestracoo.com/#clientes</loc>
-        <lastmod>2026-02-27</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.7</priority>
-    </url>
-    
-    <!-- Sección Planes y Precios -->
-    <url>
-        <loc>https://gestracoo.com/#planes</loc>
-        <lastmod>2026-02-27</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.9</priority>
-    </url>
-    
-    <!-- Sección Confianza -->
-    <url>
-        <loc>https://gestracoo.com/#confianza</loc>
-        <lastmod>2026-02-27</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.6</priority>
-    </url>
-    
-    <!-- Sección Contacto -->
-    <url>
-        <loc>https://gestracoo.com/#contacto</loc>
-        <lastmod>2026-02-27</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.8</priority>
     </url>
     
     <!-- Blog Articles -->
