@@ -976,11 +976,31 @@ body {
   }
 }
 
-/* Hero imagen: ajuste en pantallas pequeñas */
+/* Hero imagen mobile: gradiente negro, texto blanco */
 @media (max-width: 768px) {
   .hero-img-side {
     width: 100%;
-    opacity: 0.10;
+    opacity: 0.75;
+  }
+
+  .hero-img-fade {
+    background: linear-gradient(
+      to bottom,
+      rgba(0,0,0,0.60)  0%,
+      rgba(0,0,0,0.35) 45%,
+      rgba(0,0,0,0.10) 75%,
+      transparent      100%
+    );
+  }
+
+  /* Texto hero blanco sobre fondo oscuro en mobile */
+  #hero h1          { color: #ffffff; }
+  #hero h1 .text-gc-orange { color: #F28C28; }
+  #hero p           { color: rgba(255,255,255,0.80); }
+  #hero .bg-gc-dark\/5 {
+    background: rgba(255,255,255,0.15);
+    border-color: rgba(255,255,255,0.25);
+    color: rgba(255,255,255,0.80);
   }
 }
 
