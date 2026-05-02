@@ -1,0 +1,693 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Planes y Precios — GestraCOO</title>
+    <meta name="description" content="Elige el plan de GestraCOO que mejor se adapta a tu equipo. Desde proyectos individuales hasta empresas constructoras completas. 14 días gratis.">
+    <link rel="canonical" href="https://gestracoo.com/pages/planes.html">
+    <link rel="icon" type="image/png" href="../imagenes/Logos - Gestracoo.png">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+    <!-- GTM -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-MRKJZ9FR');</script>
+
+    <!-- Tailwind -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              'gc-dark':        '#0F0F0F',
+              'gc-darker':      '#000000',
+              'gc-orange':      '#F28C28',
+              'gc-orange-dark': '#d47a20',
+            },
+            fontFamily: { inter: ['Inter', 'sans-serif'] }
+          }
+        }
+      }
+    </script>
+
+    <link rel="stylesheet" href="../css/Estilo.css">
+
+    <style>
+      /* ── Planes page extra styles ── */
+      .plan-card-wrap {
+        background: #fff;
+        border: 1.5px solid #E8EDF2;
+        border-radius: 20px;
+        padding: 36px 32px;
+        display: flex;
+        flex-direction: column;
+        gap: 0;
+        transition: box-shadow 0.25s, transform 0.25s, border-color 0.25s;
+      }
+      .plan-card-wrap:hover {
+        box-shadow: 0 16px 40px rgba(0,0,0,0.09);
+        transform: translateY(-4px);
+      }
+      .plan-card-wrap.featured {
+        border-color: #0F0F0F;
+        box-shadow: 0 12px 32px rgba(0,0,0,0.12);
+      }
+      .plan-badge {
+        display: inline-block;
+        background: #0F0F0F;
+        color: #fff;
+        font-size: 10px;
+        font-weight: 700;
+        letter-spacing: 0.07em;
+        text-transform: uppercase;
+        padding: 4px 12px;
+        border-radius: 99px;
+        margin-bottom: 20px;
+      }
+      .plan-name {
+        font-size: 22px;
+        font-weight: 800;
+        color: #0F0F0F;
+        margin-bottom: 4px;
+      }
+      .plan-desc {
+        font-size: 13px;
+        color: #64748B;
+        margin-bottom: 28px;
+        line-height: 1.5;
+      }
+      .plan-price {
+        display: flex;
+        align-items: baseline;
+        gap: 4px;
+        margin-bottom: 6px;
+      }
+      .plan-price-num {
+        font-size: 48px;
+        font-weight: 900;
+        color: #0F0F0F;
+        line-height: 1;
+      }
+      .plan-price-unit {
+        font-size: 16px;
+        font-weight: 600;
+        color: #64748B;
+      }
+      .plan-price-period {
+        font-size: 12px;
+        color: #94A3B8;
+        margin-bottom: 28px;
+      }
+      .plan-trial {
+        display: inline-flex;
+        align-items: center;
+        gap: 5px;
+        font-size: 11px;
+        font-weight: 600;
+        color: #16a34a;
+        background: #f0fdf4;
+        border: 1px solid #bbf7d0;
+        padding: 4px 10px;
+        border-radius: 99px;
+        margin-bottom: 28px;
+      }
+      .plan-divider {
+        height: 1px;
+        background: #F1F5F9;
+        margin-bottom: 24px;
+      }
+      .plan-features-title {
+        font-size: 11px;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.07em;
+        color: #94A3B8;
+        margin-bottom: 14px;
+      }
+      .plan-feature-item {
+        display: flex;
+        align-items: flex-start;
+        gap: 10px;
+        font-size: 13px;
+        color: #374151;
+        padding: 5px 0;
+      }
+      .plan-feature-check {
+        width: 18px;
+        height: 18px;
+        border-radius: 50%;
+        background: #F28C28;
+        color: #fff;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 10px;
+        flex-shrink: 0;
+        margin-top: 1px;
+      }
+      .plan-feature-check.dark {
+        background: #0F0F0F;
+      }
+      .plan-cta {
+        margin-top: auto;
+        padding-top: 28px;
+      }
+      .btn-plan {
+        width: 100%;
+        padding: 14px;
+        border-radius: 12px;
+        font-family: 'Inter', sans-serif;
+        font-size: 15px;
+        font-weight: 700;
+        cursor: pointer;
+        border: none;
+        transition: all 0.2s;
+      }
+      .btn-plan-outline {
+        background: transparent;
+        border: 1.5px solid #0F0F0F;
+        color: #0F0F0F;
+      }
+      .btn-plan-outline:hover {
+        background: #0F0F0F;
+        color: #fff;
+      }
+      .btn-plan-filled {
+        background: #0F0F0F;
+        color: #fff;
+      }
+      .btn-plan-filled:hover {
+        background: #2a2a2a;
+      }
+      .btn-plan-orange {
+        background: #F28C28;
+        color: #fff;
+      }
+      .btn-plan-orange:hover {
+        background: #d47a20;
+        transform: translateY(-1px);
+      }
+      /* FAQ */
+      .faq-item {
+        border-bottom: 1px solid #F1F5F9;
+        padding: 20px 0;
+      }
+      .faq-question {
+        font-size: 15px;
+        font-weight: 600;
+        color: #0F0F0F;
+        cursor: pointer;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 12px;
+        user-select: none;
+      }
+      .faq-answer {
+        font-size: 14px;
+        color: #64748B;
+        line-height: 1.6;
+        padding-top: 12px;
+        display: none;
+      }
+      .faq-answer.open { display: block; }
+      .faq-icon {
+        width: 20px;
+        height: 20px;
+        flex-shrink: 0;
+        color: #F28C28;
+        transition: transform 0.2s;
+      }
+      .faq-icon.open { transform: rotate(45deg); }
+
+      /* Comparison table */
+      .comp-table { width: 100%; border-collapse: collapse; }
+      .comp-table th {
+        padding: 12px 16px;
+        font-size: 12px;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        color: #94A3B8;
+        text-align: left;
+        border-bottom: 2px solid #F1F5F9;
+      }
+      .comp-table th:not(:first-child) { text-align: center; }
+      .comp-table td {
+        padding: 12px 16px;
+        font-size: 13px;
+        color: #374151;
+        border-bottom: 1px solid #F8FAFC;
+      }
+      .comp-table td:not(:first-child) { text-align: center; }
+      .comp-table tr:hover td { background: #FAFBFF; }
+      .comp-check { color: #22c55e; font-size: 16px; }
+      .comp-dash  { color: #CBD5E1; font-size: 16px; }
+    </style>
+</head>
+<body class="font-inter bg-white text-gc-dark antialiased">
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MRKJZ9FR" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
+<!-- ── NAV ── -->
+<nav id="main-nav" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 scrolled">
+    <div class="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
+        <a href="../index.html" class="flex items-center gap-2">
+            <img src="../imagenes/Logos - Gestracoo.png" alt="GestraCOO" class="h-9 w-9 rounded-lg object-contain">
+            <span class="text-gc-dark font-bold text-lg tracking-tight">GestraCOO</span>
+        </a>
+        <ul class="hidden md:flex items-center gap-8 text-sm font-medium text-gc-dark/70">
+            <li><a href="../index.html#mision" class="hover:text-gc-dark transition-colors">Misión</a></li>
+            <li><a href="../index.html#modulos" class="hover:text-gc-dark transition-colors">Módulos</a></li>
+            <li><a href="../index.html#blog" class="hover:text-gc-dark transition-colors">Blog</a></li>
+            <li><a href="planes.html" class="text-gc-dark font-semibold transition-colors border-b-2 border-gc-orange pb-0.5">Planes</a></li>
+        </ul>
+        <div class="flex items-center gap-3">
+            <button id="nav-cta-btn" class="hidden md:inline-flex items-center gap-1 bg-gc-orange hover:bg-gc-orange-dark text-white text-sm font-semibold px-5 py-2 rounded-full transition-colors">
+                Empieza hoy →
+            </button>
+            <button id="hamburger" class="md:hidden flex flex-col gap-1.5 p-2" aria-label="Menú">
+                <span class="hamburger-line block w-6 h-0.5 bg-gc-dark transition-all duration-300"></span>
+                <span class="hamburger-line block w-6 h-0.5 bg-gc-dark transition-all duration-300"></span>
+                <span class="hamburger-line block w-6 h-0.5 bg-gc-dark transition-all duration-300"></span>
+            </button>
+        </div>
+    </div>
+    <div id="mobile-menu" class="mobile-menu md:hidden bg-white border-t border-slate-100">
+        <ul class="flex flex-col px-6 py-4 gap-4 text-gc-dark font-medium">
+            <li><a href="../index.html#mision" class="block py-2 border-b border-slate-100">Misión</a></li>
+            <li><a href="../index.html#modulos" class="block py-2 border-b border-slate-100">Módulos</a></li>
+            <li><a href="../index.html#blog" class="block py-2 border-b border-slate-100">Blog</a></li>
+            <li><a href="planes.html" class="block py-2 border-b border-slate-100 text-gc-orange font-semibold">Planes</a></li>
+            <li><button id="mobile-cta-btn" class="w-full bg-gc-orange text-white font-semibold py-3 rounded-full mt-2">Empieza hoy →</button></li>
+        </ul>
+    </div>
+</nav>
+
+<!-- ── HERO PLANES ── -->
+<section class="pt-32 pb-16 text-center px-6">
+    <div class="max-w-3xl mx-auto">
+        <div class="inline-flex items-center gap-2 bg-gc-dark/5 border border-gc-dark/10 text-gc-dark/60 text-sm font-medium px-4 py-1.5 rounded-full mb-6">
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#F28C28" stroke-width="2.5"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <span>14 días gratis en todos los planes</span>
+        </div>
+        <h1 class="text-3xl md:text-5xl font-extrabold text-gc-dark leading-tight mb-4">
+            El plan que tu equipo<br><span class="text-gc-orange">necesita hoy</span>
+        </h1>
+        <p class="text-slate-500 text-base md:text-lg max-w-xl mx-auto">
+            Gestión integral de proyectos de construcción. Sin compromisos, cancela cuando quieras.
+        </p>
+    </div>
+</section>
+
+<!-- ── PLANES CARDS ── -->
+<section class="pb-20 px-6">
+    <div class="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-6 items-start">
+
+        <!-- Plan Individual -->
+        <div class="plan-card-wrap">
+            <div class="plan-name">Individual</div>
+            <p class="plan-desc">Para profesionales y contratistas independientes que gestionan sus propios proyectos.</p>
+            <div class="plan-price">
+                <span class="plan-price-num">2</span>
+                <span class="plan-price-unit">UF</span>
+            </div>
+            <div class="plan-price-period">por usuario / mes</div>
+            <div class="plan-trial">
+                <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                14 días gratis incluidos
+            </div>
+            <div class="plan-divider"></div>
+            <div class="plan-features-title">Incluye</div>
+            <div class="flex flex-col gap-1 mb-2">
+                <div class="plan-feature-item"><span class="plan-feature-check">✓</span><span>1 usuario</span></div>
+                <div class="plan-feature-item"><span class="plan-feature-check">✓</span><span>Gestión de subcontratos</span></div>
+                <div class="plan-feature-item"><span class="plan-feature-check">✓</span><span>Control de materiales</span></div>
+                <div class="plan-feature-item"><span class="plan-feature-check">✓</span><span>Certificaciones con trazabilidad</span></div>
+                <div class="plan-feature-item"><span class="plan-feature-check">✓</span><span>Programa de obra básico</span></div>
+                <div class="plan-feature-item"><span class="plan-feature-check">✓</span><span>Notificaciones automáticas</span></div>
+                <div class="plan-feature-item"><span class="plan-feature-check">✓</span><span>Reportes básicos</span></div>
+                <div class="plan-feature-item"><span class="plan-feature-check">✓</span><span>Soporte por email</span></div>
+            </div>
+            <div class="plan-cta">
+                <button class="btn-plan btn-plan-outline plan-select-btn" data-plan="Plan Individual">
+                    Comenzar gratis →
+                </button>
+            </div>
+        </div>
+
+        <!-- Plan Equipo (destacado) -->
+        <div class="plan-card-wrap featured">
+            <div class="plan-badge">⭐ Más popular</div>
+            <div class="plan-name">Equipo</div>
+            <p class="plan-desc">Para equipos de obra que necesitan colaboración en tiempo real y visibilidad completa.</p>
+            <div class="plan-price">
+                <span class="plan-price-num">6</span>
+                <span class="plan-price-unit">UF</span>
+            </div>
+            <div class="plan-price-period">por usuario / mes</div>
+            <div class="plan-trial">
+                <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                14 días gratis incluidos
+            </div>
+            <div class="plan-divider"></div>
+            <div class="plan-features-title">Todo lo de Individual, más</div>
+            <div class="flex flex-col gap-1 mb-2">
+                <div class="plan-feature-item"><span class="plan-feature-check dark">✓</span><span>Hasta 4 usuarios</span></div>
+                <div class="plan-feature-item"><span class="plan-feature-check dark">✓</span><span>Múltiples proyectos simultáneos</span></div>
+                <div class="plan-feature-item"><span class="plan-feature-check dark">✓</span><span>Programa de obra completo</span></div>
+                <div class="plan-feature-item"><span class="plan-feature-check dark">✓</span><span>Compatibilidad Primavera P6 / MS Project</span></div>
+                <div class="plan-feature-item"><span class="plan-feature-check dark">✓</span><span>Roles y permisos por usuario</span></div>
+                <div class="plan-feature-item"><span class="plan-feature-check dark">✓</span><span>Reportes avanzados</span></div>
+                <div class="plan-feature-item"><span class="plan-feature-check dark">✓</span><span>Documentos adjuntos ilimitados</span></div>
+                <div class="plan-feature-item"><span class="plan-feature-check dark">✓</span><span>Soporte prioritario</span></div>
+            </div>
+            <div class="plan-cta">
+                <button class="btn-plan btn-plan-orange plan-select-btn" data-plan="Plan Equipo">
+                    Comenzar gratis →
+                </button>
+            </div>
+        </div>
+
+        <!-- Plan Empresa -->
+        <div class="plan-card-wrap">
+            <div class="plan-name">Empresa</div>
+            <p class="plan-desc">Para constructoras y empresas que gestionan múltiples proyectos a gran escala.</p>
+            <div class="plan-price">
+                <span class="text-3xl font-black text-gc-dark">Personalizado</span>
+            </div>
+            <div class="plan-price-period">cotización según tu equipo</div>
+            <div class="plan-trial">
+                <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                14 días gratis incluidos
+            </div>
+            <div class="plan-divider"></div>
+            <div class="plan-features-title">Todo lo de Equipo, más</div>
+            <div class="flex flex-col gap-1 mb-2">
+                <div class="plan-feature-item"><span class="plan-feature-check">✓</span><span>Usuarios ilimitados</span></div>
+                <div class="plan-feature-item"><span class="plan-feature-check">✓</span><span>Proyectos ilimitados</span></div>
+                <div class="plan-feature-item"><span class="plan-feature-check">✓</span><span>Datos aislados por proyecto</span></div>
+                <div class="plan-feature-item"><span class="plan-feature-check">✓</span><span>Panel de administración centralizado</span></div>
+                <div class="plan-feature-item"><span class="plan-feature-check">✓</span><span>Reportes personalizados</span></div>
+                <div class="plan-feature-item"><span class="plan-feature-check">✓</span><span>API de integración</span></div>
+                <div class="plan-feature-item"><span class="plan-feature-check">✓</span><span>Capacitación incluida</span></div>
+                <div class="plan-feature-item"><span class="plan-feature-check">✓</span><span>Gestor de cuenta dedicado</span></div>
+                <div class="plan-feature-item"><span class="plan-feature-check">✓</span><span>Soporte 24/7</span></div>
+            </div>
+            <div class="plan-cta">
+                <button class="btn-plan btn-plan-outline plan-select-btn" data-plan="Plan Empresa">
+                    Consultar precio →
+                </button>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<!-- ── TABLA COMPARATIVA ── -->
+<section class="py-16 px-6 bg-slate-50">
+    <div class="max-w-5xl mx-auto">
+        <h2 class="text-2xl md:text-3xl font-extrabold text-gc-dark text-center mb-12">Comparativa de planes</h2>
+        <div class="bg-white rounded-2xl border border-slate-200 overflow-hidden overflow-x-auto">
+            <table class="comp-table">
+                <thead>
+                    <tr>
+                        <th>Funcionalidad</th>
+                        <th>Individual</th>
+                        <th>Equipo</th>
+                        <th>Empresa</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td>Usuarios</td><td>1</td><td>Hasta 4</td><td>Ilimitados</td></tr>
+                    <tr><td>Proyectos simultáneos</td><td>1</td><td>Múltiples</td><td>Ilimitados</td></tr>
+                    <tr><td>Gestión de subcontratos</td><td class="comp-check">✓</td><td class="comp-check">✓</td><td class="comp-check">✓</td></tr>
+                    <tr><td>Control de materiales</td><td class="comp-check">✓</td><td class="comp-check">✓</td><td class="comp-check">✓</td></tr>
+                    <tr><td>Certificaciones</td><td class="comp-check">✓</td><td class="comp-check">✓</td><td class="comp-check">✓</td></tr>
+                    <tr><td>Notificaciones automáticas</td><td class="comp-check">✓</td><td class="comp-check">✓</td><td class="comp-check">✓</td></tr>
+                    <tr><td>Programa de obra (básico)</td><td class="comp-check">✓</td><td class="comp-check">✓</td><td class="comp-check">✓</td></tr>
+                    <tr><td>Primavera P6 / MS Project</td><td class="comp-dash">—</td><td class="comp-check">✓</td><td class="comp-check">✓</td></tr>
+                    <tr><td>Roles y permisos</td><td class="comp-dash">—</td><td class="comp-check">✓</td><td class="comp-check">✓</td></tr>
+                    <tr><td>Reportes avanzados</td><td class="comp-dash">—</td><td class="comp-check">✓</td><td class="comp-check">✓</td></tr>
+                    <tr><td>API integración</td><td class="comp-dash">—</td><td class="comp-dash">—</td><td class="comp-check">✓</td></tr>
+                    <tr><td>Gestor de cuenta dedicado</td><td class="comp-dash">—</td><td class="comp-dash">—</td><td class="comp-check">✓</td></tr>
+                    <tr><td>Soporte</td><td>Email</td><td>Prioritario</td><td>24/7</td></tr>
+                    <tr><td>Precio por usuario/mes</td><td class="font-semibold">2 UF</td><td class="font-semibold text-gc-orange">6 UF</td><td class="font-semibold">Personalizado</td></tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</section>
+
+<!-- ── FAQ ── -->
+<section class="py-16 px-6">
+    <div class="max-w-2xl mx-auto">
+        <h2 class="text-2xl md:text-3xl font-extrabold text-gc-dark text-center mb-12">Preguntas frecuentes</h2>
+
+        <div class="faq-item">
+            <div class="faq-question" onclick="toggleFaq(this)">
+                ¿Qué incluyen los 14 días gratis?
+                <svg class="faq-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+            </div>
+            <div class="faq-answer">Acceso completo a todas las funcionalidades del plan que elijas, sin necesidad de tarjeta de crédito. Nuestro equipo te contacta para configurar tu cuenta y guiarte en los primeros pasos.</div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question" onclick="toggleFaq(this)">
+                ¿Puedo cambiar de plan después?
+                <svg class="faq-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+            </div>
+            <div class="faq-answer">Sí, puedes subir o bajar de plan en cualquier momento. Los cambios se aplican en el siguiente período de facturación.</div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question" onclick="toggleFaq(this)">
+                ¿Qué es una UF y cómo se cobra?
+                <svg class="faq-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+            </div>
+            <div class="faq-answer">La UF (Unidad de Fomento) es una unidad de cuenta reajustable usada en Chile. El cobro se realiza mensualmente en pesos chilenos equivalentes al valor de la UF del día de facturación.</div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question" onclick="toggleFaq(this)">
+                ¿Los datos de mis proyectos están seguros?
+                <svg class="faq-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+            </div>
+            <div class="faq-answer">Sí. Cada proyecto tiene datos completamente aislados. Usamos encriptación en tránsito y en reposo, y backups automáticos diarios.</div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question" onclick="toggleFaq(this)">
+                ¿GestraCOO funciona en dispositivos móviles?
+                <svg class="faq-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+            </div>
+            <div class="faq-answer">Sí, la plataforma es completamente responsiva y funciona en cualquier navegador, incluyendo móviles y tablets.</div>
+        </div>
+    </div>
+</section>
+
+<!-- ── CTA FINAL ── -->
+<section class="py-16 px-6 bg-gc-dark text-center">
+    <div class="max-w-2xl mx-auto">
+        <h2 class="text-2xl md:text-3xl font-extrabold text-white mb-4">¿Listo para empezar?</h2>
+        <p class="text-white/60 mb-8">Tu equipo operando con control total en menos de 24 horas.</p>
+        <button id="cta-final-btn" class="inline-flex items-center gap-2 bg-gc-orange hover:bg-gc-orange-dark text-white font-bold text-lg px-8 py-4 rounded-full transition-all duration-300 hover:scale-105">
+            Empezar 14 días gratis →
+        </button>
+    </div>
+</section>
+
+<!-- ── FOOTER ── -->
+<footer class="bg-white py-10 border-t border-slate-200">
+    <div class="max-w-6xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-4">
+        <div class="flex items-center gap-3">
+            <img src="../imagenes/Logos - Gestracoo.png" alt="GestraCOO" class="h-8 w-8 rounded-lg object-contain">
+            <span class="text-gc-dark font-bold">GestraCOO</span>
+        </div>
+        <div class="flex items-center gap-4">
+            <a href="https://www.linkedin.com/company/gestracoo/?viewAsMember=true" target="_blank" rel="noopener noreferrer" class="text-slate-400 hover:text-gc-dark transition-colors">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+            </a>
+            <a href="https://www.instagram.com/gestracoo/" target="_blank" rel="noopener noreferrer" class="text-slate-400 hover:text-gc-dark transition-colors">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+            </a>
+        </div>
+        <p class="text-slate-400 text-sm">
+            © 2025 GestraCOO ·
+            <a href="politica-cookies.html" class="hover:text-slate-600 transition-colors">Cookies</a> ·
+            <a href="politica-privacidad.html" class="hover:text-slate-600 transition-colors">Privacidad</a>
+        </p>
+    </div>
+</footer>
+
+<!-- ── MODAL FORMULARIO ── -->
+<div id="beta-modal" class="modal-overlay">
+    <div class="modal-box">
+        <button class="modal-close absolute top-4 right-4 text-slate-400 hover:text-slate-600 text-2xl leading-none">&times;</button>
+        <h2 class="text-2xl font-bold text-gc-dark mb-1">Solicita tus 14 Días Gratis</h2>
+        <p class="modal-description text-slate-500 text-sm mb-6">Nuestro equipo se pondrá en contacto contigo para activar tu prueba gratuita.</p>
+        <form id="beta-form" class="flex flex-col gap-4">
+            <div class="form-field">
+                <label>Nombre completo *</label>
+                <input type="text" id="nombre" name="nombre" required placeholder="Tu nombre completo">
+            </div>
+            <div class="form-field">
+                <label>Correo electrónico *</label>
+                <input type="email" id="correo" name="correo" required placeholder="ejemplo@correo.com">
+            </div>
+            <div class="form-field">
+                <label>País *</label>
+                <select id="pais" name="pais" required>
+                    <option value="">Selecciona tu país</option>
+                    <option value="Chile" data-code="+56" selected>Chile (+56)</option>
+                    <option value="Argentina" data-code="+54">Argentina (+54)</option>
+                    <option value="Perú" data-code="+51">Perú (+51)</option>
+                    <option value="Colombia" data-code="+57">Colombia (+57)</option>
+                    <option value="México" data-code="+52">México (+52)</option>
+                    <option value="Brasil" data-code="+55">Brasil (+55)</option>
+                    <option value="Uruguay" data-code="+598">Uruguay (+598)</option>
+                    <option value="España" data-code="+34">España (+34)</option>
+                    <option value="Estados Unidos" data-code="+1">Estados Unidos (+1)</option>
+                    <option value="Otro" data-code="+">Otro</option>
+                </select>
+            </div>
+            <div class="form-field">
+                <label>Teléfono *</label>
+                <div class="phone-row">
+                    <span id="country-code" class="country-code-badge">+56</span>
+                    <input type="tel" id="telefono" name="telefono" required placeholder="9 1234 5678">
+                </div>
+            </div>
+            <div class="form-field">
+                <label>Plan de interés *</label>
+                <select id="plan" name="plan" required>
+                    <option value="">Selecciona el plan</option>
+                    <option value="Plan Individual">Plan Individual (2 UF/usuario/mes)</option>
+                    <option value="Plan Equipo">Plan Equipo (6 UF/usuario/mes) — Más Popular</option>
+                    <option value="Plan Empresa">Plan Empresa (Personalizado)</option>
+                </select>
+            </div>
+            <div class="form-field">
+                <label>Empresa *</label>
+                <input type="text" id="empresa" name="empresa" required placeholder="Nombre de tu empresa">
+            </div>
+            <button type="submit" class="form-submit-btn">Solicitar 14 días gratis</button>
+        </form>
+    </div>
+</div>
+
+<!-- Modal Éxito -->
+<div id="success-modal" class="modal-overlay">
+    <div class="modal-box text-center py-12">
+        <div class="text-5xl mb-4">✅</div>
+        <h2 class="text-2xl font-bold text-gc-dark mb-3">¡Solicitud Enviada!</h2>
+        <p class="text-slate-500 mb-6">Gracias por tu interés en GestraCOO.<br>Nos pondremos en contacto contigo pronto.</p>
+        <button id="success-close-btn" class="bg-gc-orange hover:bg-gc-orange-dark text-white font-semibold px-8 py-3 rounded-full transition-colors">Entendido</button>
+    </div>
+</div>
+
+<!-- Lucide -->
+<script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+
+<script>
+// Nav scroll
+const nav = document.getElementById('main-nav');
+window.addEventListener('scroll', () => {
+  nav.classList.toggle('scrolled', window.scrollY > 10);
+}, { passive: true });
+
+// Hamburger
+const hamburger = document.getElementById('hamburger');
+const mobileMenu = document.getElementById('mobile-menu');
+hamburger.addEventListener('click', () => {
+  const open = mobileMenu.classList.toggle('open');
+  hamburger.classList.toggle('open', open);
+});
+
+// Abrir modal
+function openModal(planValue) {
+  const modal = document.getElementById('beta-modal');
+  modal.classList.add('active');
+  document.body.style.overflow = 'hidden';
+  if (planValue) {
+    const planSelect = document.getElementById('plan');
+    planSelect.value = planValue;
+  }
+}
+function closeModal(id) {
+  document.getElementById(id).classList.remove('active');
+  document.body.style.overflow = '';
+}
+
+// Botones de plan → abren modal con plan pre-seleccionado
+document.querySelectorAll('.plan-select-btn').forEach(btn => {
+  btn.addEventListener('click', () => openModal(btn.dataset.plan));
+});
+
+// CTAs nav
+['nav-cta-btn','mobile-cta-btn','cta-final-btn'].forEach(id => {
+  const el = document.getElementById(id);
+  if (el) el.addEventListener('click', () => openModal(null));
+});
+
+// Cerrar modal
+document.querySelector('.modal-close').addEventListener('click', () => closeModal('beta-modal'));
+document.getElementById('beta-modal').addEventListener('click', e => { if (e.target === e.currentTarget) closeModal('beta-modal'); });
+document.getElementById('success-close-btn').addEventListener('click', () => closeModal('success-modal'));
+document.addEventListener('keydown', e => { if (e.key === 'Escape') { closeModal('beta-modal'); closeModal('success-modal'); }});
+
+// Country code
+const paisSelect = document.getElementById('pais');
+const countryCode = document.getElementById('country-code');
+paisSelect.addEventListener('change', () => {
+  const opt = paisSelect.options[paisSelect.selectedIndex];
+  countryCode.textContent = opt.getAttribute('data-code') || '+56';
+});
+
+// Form submit
+const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwWGKQqaVNKsxjMBj4Uo9zIXMJk3EgCiC9uddpWi4Vtu2NUpEm6aJ10H2nUaoLdDnix/exec';
+document.getElementById('beta-form').addEventListener('submit', async e => {
+  e.preventDefault();
+  const btn = e.target.querySelector('.form-submit-btn');
+  const orig = btn.textContent;
+  btn.disabled = true; btn.textContent = 'Enviando…';
+  const pais = paisSelect.value;
+  if (!pais) { alert('Por favor, selecciona tu país'); btn.disabled=false; btn.textContent=orig; return; }
+  const payload = {
+    nombre: document.getElementById('nombre').value,
+    correo: document.getElementById('correo').value,
+    pais,
+    telefono: countryCode.textContent + ' ' + document.getElementById('telefono').value,
+    plan: document.getElementById('plan').value,
+    empresa: document.getElementById('empresa').value,
+    fecha: new Date().toLocaleString('es-CL'),
+  };
+  try {
+    await fetch(SCRIPT_URL, { method:'POST', mode:'no-cors', headers:{'Content-Type':'application/json'}, body: JSON.stringify(payload) });
+    closeModal('beta-modal');
+    e.target.reset();
+    countryCode.textContent = '+56';
+    document.getElementById('success-modal').classList.add('active');
+  } catch { alert('Error al enviar. Por favor intenta nuevamente.'); }
+  finally { btn.disabled=false; btn.textContent=orig; document.body.style.overflow=''; }
+});
+
+// FAQ toggle
+function toggleFaq(question) {
+  const answer = question.nextElementSibling;
+  const icon = question.querySelector('.faq-icon');
+  answer.classList.toggle('open');
+  icon.classList.toggle('open');
+}
+
+if (typeof lucide !== 'undefined') lucide.createIcons();
+</script>
+</body>
+</html>
