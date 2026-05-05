@@ -48,12 +48,10 @@ body {
    HERO
 ============================================================ */
 
-/* Imagen lado derecho (background-image desde CSS) */
+/* ── Hero: imagen lado derecho ───────────────────────────── */
 .hero-img-side {
   position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
+  top: 0; right: 0; bottom: 0;
   width: 65%;
   background-image: url('../imagenes/fotohero.png');
   background-size: cover;
@@ -61,10 +59,8 @@ body {
   pointer-events: none;
 }
 
-/* Gradiente encima de la imagen: blanco izquierda → transparente derecha */
 .hero-img-fade {
-  position: absolute;
-  inset: 0;
+  position: absolute; inset: 0;
   background: linear-gradient(
     to right,
     #ffffff        0%,
@@ -76,12 +72,221 @@ body {
   );
 }
 
-/* Mobile: imagen más tenue para no tapar el texto */
 @media (max-width: 768px) {
-  .hero-img-side {
-    width: 100%;
-    opacity: 0.12;
+  .hero-img-side { width: 100%; opacity: 0.75; }
+  .hero-img-fade {
+    background: linear-gradient(
+      to bottom,
+      rgba(0,0,0,0.60)  0%,
+      rgba(0,0,0,0.35) 45%,
+      rgba(0,0,0,0.10) 75%,
+      transparent      100%
+    );
   }
+  #hero h1                { color: #ffffff; }
+  #hero h1 .text-gc-orange { color: #F28C28; }
+  #hero p                 { color: rgba(255,255,255,0.80); }
+  #hero .bg-gc-dark\/5 {
+    background: rgba(255,255,255,0.15);
+    border-color: rgba(255,255,255,0.25);
+    color: rgba(255,255,255,0.80);
+  }
+}
+
+/* placeholder — unused now */
+.hf-container {
+  position: relative;
+  width: 500px;
+  height: 300px;
+  flex-shrink: 0;
+}
+
+.hf-svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  overflow: visible;
+}
+
+/* Programa de Obra card */
+.hf-programa {
+  position: absolute;
+  left: 0;
+  top: 55px;
+  width: 148px;
+  background: #fff;
+  border: 1.5px solid #E2E8F0;
+  border-radius: 14px;
+  padding: 12px 14px;
+  box-shadow: 0 6px 24px rgba(0,0,0,0.07);
+}
+
+.hf-prog-header {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 12px;
+  font-size: 10.5px;
+  font-weight: 700;
+  color: var(--gc-dark);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.hf-icon-sm {
+  width: 13px;
+  height: 13px;
+  stroke: var(--gc-orange);
+  flex-shrink: 0;
+}
+
+.hf-icon-xs {
+  width: 11px;
+  height: 11px;
+  flex-shrink: 0;
+}
+
+.hf-bar-row {
+  margin-bottom: 9px;
+}
+
+.hf-task {
+  display: block;
+  font-size: 9.5px;
+  color: #94a3b8;
+  margin-bottom: 4px;
+  font-weight: 500;
+}
+
+.hf-track {
+  width: 100%;
+  height: 5px;
+  background: #F1F5F9;
+  border-radius: 99px;
+  overflow: hidden;
+}
+
+.hf-fill {
+  height: 100%;
+  background: var(--gc-orange);
+  border-radius: 99px;
+}
+
+.hf-fill-pending {
+  background: #CBD5E1;
+}
+
+.hf-prog-footer {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  margin-top: 10px;
+  padding-top: 8px;
+  border-top: 1px solid #F1F5F9;
+  font-size: 9px;
+  color: #94a3b8;
+  font-weight: 500;
+}
+
+/* GestraCOO hub central */
+.hf-gc-hub {
+  position: absolute;
+  left: 208px;
+  top: 106px;
+  width: 88px;
+  height: 88px;
+  border-radius: 50%;
+  background: var(--gc-dark);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 3px;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.18);
+}
+
+.hf-gc-pulse {
+  position: absolute;
+  inset: -10px;
+  border-radius: 50%;
+  border: 1.5px solid rgba(242,140,40,0.30);
+  animation: hfPulse 2.2s ease-in-out infinite;
+  pointer-events: none;
+}
+
+.hf-gc-pulse::before {
+  content: '';
+  position: absolute;
+  inset: 10px;
+  border-radius: 50%;
+  border: 1px solid rgba(242,140,40,0.12);
+}
+
+@keyframes hfPulse {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50%       { transform: scale(1.1); opacity: 0.4; }
+}
+
+.hf-gc-img {
+  width: 36px;
+  height: 36px;
+  object-fit: contain;
+  filter: brightness(0) invert(1);
+}
+
+.hf-gc-label {
+  font-size: 8.5px;
+  font-weight: 700;
+  color: rgba(255,255,255,0.65);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+/* Output module pills */
+.hf-output {
+  position: absolute;
+  right: 0;
+  width: 136px;
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  background: #fff;
+  border: 1.5px solid #E2E8F0;
+  border-radius: 10px;
+  padding: 10px 12px;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--gc-dark);
+  box-shadow: 0 3px 14px rgba(0,0,0,0.06);
+  transition: box-shadow 0.2s, border-color 0.2s;
+}
+
+.hf-output:hover {
+  border-color: var(--gc-orange);
+  box-shadow: 0 4px 20px rgba(242,140,40,0.15);
+}
+
+.hf-output-1 { top: 30px; }
+.hf-output-2 { top: 123px; }
+.hf-output-3 { top: 216px; }
+
+.hf-out-icon-wrap {
+  width: 28px;
+  height: 28px;
+  border-radius: 7px;
+  background: rgba(242,140,40,0.10);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.hf-out-icon {
+  width: 14px;
+  height: 14px;
+  stroke: var(--gc-orange);
 }
 .hero-grid-pattern {
   background-image:
@@ -307,12 +512,11 @@ body {
   z-index: 2;
 }
 
-/* 5 nodos equidistantes a 72° (radio 140px, centro 180,180, nodo 80×80) */
-.hub-n1 { top:   0px; left: 140px; } /* arriba        (180, 40)  */
-.hub-n2 { top:  97px; left: 273px; } /* arriba-der    (313,137)  */
-.hub-n3 { top: 253px; left: 222px; } /* abajo-der     (262,293)  */
-.hub-n4 { top: 253px; left:  58px; } /* abajo-izq     ( 98,293)  */
-.hub-n5 { top:  97px; left:   7px; } /* arriba-izq    ( 47,137)  */
+/* Flujo direccional: Programa(izq) → GC(centro) → 3 salidas(der) */
+.hub-n1 { top: 140px; left:   0px; } /* Programa — izquierda centro   */
+.hub-n2 { top:  28px; left: 276px; } /* Subcontratos — arriba derecha */
+.hub-n3 { top: 140px; left: 276px; } /* Materiales — derecha centro   */
+.hub-n4 { top: 252px; left: 276px; } /* Certificaciones — abajo der.  */
 
 /* Inner: flip container */
 .hub-node-inner {
@@ -873,7 +1077,7 @@ body {
     justify-content: center;
     width: 100% !important;
     margin-left: 0 !important;
-    height: 220px;
+    height: 270px;
     overflow: visible;
   }
 
@@ -882,7 +1086,7 @@ body {
     display: block;
     position: relative;
     width: 320px;
-    height: 210px;
+    height: 260px;
     flex-shrink: 0;
   }
 
@@ -902,11 +1106,11 @@ body {
     z-index: 2;
   }
 
-  .hub-mn-1 { top: 10px; left:   4px; }
-  .hub-mn-2 { top: 10px; left:  68px; }
-  .hub-mn-3 { top: 10px; left: 132px; }
-  .hub-mn-4 { top: 10px; left: 196px; }
-  .hub-mn-5 { top: 10px; left: 260px; }
+  /* Flujo: Programa (arriba centro) → GC (medio) → 3 salidas (abajo) */
+  .hub-mn-top { top:   0px; left: 132px; } /* Programa — arriba centro      */
+  .hub-mn-bl  { top: 195px; left:  10px; } /* Subcontratos — abajo izquierda */
+  .hub-mn-bc  { top: 195px; left: 132px; } /* Materiales — abajo centro      */
+  .hub-mn-br  { top: 195px; left: 254px; } /* Certificaciones — abajo der.   */
 
   .hub-mn-inner {
     width: 100%; height: 100%;
@@ -937,20 +1141,19 @@ body {
     font-family: 'Inter', sans-serif;
   }
 
-  /* Logo abajo centro: SVG center (160,155) → CSS top=120, left=125 */
+  /* Logo GestraCOO centro (SVG center ≈ 160,130) */
   .hub-mn-center {
     position: absolute;
-    top: 120px; left: 125px;
+    top: 93px; left: 125px;
     width: 70px; height: 70px;
     border-radius: 50%;
-    background: #fff;
-    border: 2px solid #E2E8F0;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.10);
+    background: var(--gc-dark);
+    box-shadow: 0 4px 20px rgba(0,0,0,0.18);
     display: flex; align-items: center; justify-content: center;
     z-index: 2;
   }
 
-  .hub-mn-center img { width: 48px; height: 48px; object-fit: contain; }
+  .hub-mn-center img { width: 46px; height: 46px; object-fit: contain; filter: brightness(0) invert(1); }
 }
 
 /* Platform cards row-2: apilar en mobile */
@@ -976,33 +1179,6 @@ body {
   }
 }
 
-/* Hero imagen mobile: gradiente negro, texto blanco */
-@media (max-width: 768px) {
-  .hero-img-side {
-    width: 100%;
-    opacity: 0.75;
-  }
-
-  .hero-img-fade {
-    background: linear-gradient(
-      to bottom,
-      rgba(0,0,0,0.60)  0%,
-      rgba(0,0,0,0.35) 45%,
-      rgba(0,0,0,0.10) 75%,
-      transparent      100%
-    );
-  }
-
-  /* Texto hero blanco sobre fondo oscuro en mobile */
-  #hero h1          { color: #ffffff; }
-  #hero h1 .text-gc-orange { color: #F28C28; }
-  #hero p           { color: rgba(255,255,255,0.80); }
-  #hero .bg-gc-dark\/5 {
-    background: rgba(255,255,255,0.15);
-    border-color: rgba(255,255,255,0.25);
-    color: rgba(255,255,255,0.80);
-  }
-}
 
 /* Cookie banner: wrap en mobile */
 @media (max-width: 480px) {

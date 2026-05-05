@@ -181,7 +181,6 @@
         <div class="hero-img-fade"></div>
     </div>
 
-
     <!-- Contenido texto izquierda -->
     <div class="relative z-10 w-full max-w-5xl mx-auto px-5 md:px-16 py-10 md:py-32">
         <div class="max-w-xl">
@@ -220,132 +219,125 @@
             <div class="gs-reveal hub-outer-container flex items-center justify-center overflow-visible">
                 <div class="hub-wrapper">
 
-                    <!-- SVG: líneas + puntos animados (5 nodos a 72° cada uno) -->
+                    <!-- SVG: flujo Programa → GestraCOO → módulos -->
                     <svg class="hub-svg" viewBox="0 0 360 360" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <circle cx="180" cy="180" r="112" stroke="#EBEBEB" stroke-width="1" stroke-dasharray="5 5"/>
+                        <defs>
+                            <marker id="hub-arr" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto">
+                                <path d="M0,0 L0,7 L7,3.5 z" fill="#CBD5E1"/>
+                            </marker>
+                        </defs>
 
-                        <!-- Líneas -->
-                        <line x1="180" y1="80"  x2="180" y2="135" stroke="#E2E8F0" stroke-width="1.5"/>
-                        <line x1="275" y1="149" x2="223" y2="166" stroke="#E2E8F0" stroke-width="1.5"/>
-                        <line x1="238" y1="261" x2="206" y2="216" stroke="#E2E8F0" stroke-width="1.5"/>
-                        <line x1="122" y1="261" x2="154" y2="216" stroke="#E2E8F0" stroke-width="1.5"/>
-                        <line x1="85"  y1="149" x2="137" y2="166" stroke="#E2E8F0" stroke-width="1.5"/>
+                        <!-- Programa → GestraCOO (horizontal) -->
+                        <line x1="82" y1="180" x2="143" y2="180" stroke="#CBD5E1" stroke-width="1.5" stroke-dasharray="5 4" marker-end="url(#hub-arr)"/>
+                        <!-- GestraCOO → Subcontratos (diagonal arriba) -->
+                        <line x1="217" y1="180" x2="276" y2="68" stroke="#CBD5E1" stroke-width="1.5" stroke-dasharray="5 4" marker-end="url(#hub-arr)"/>
+                        <!-- GestraCOO → Materiales (horizontal) -->
+                        <line x1="217" y1="180" x2="276" y2="180" stroke="#CBD5E1" stroke-width="1.5" stroke-dasharray="5 4" marker-end="url(#hub-arr)"/>
+                        <!-- GestraCOO → Certificaciones (diagonal abajo) -->
+                        <line x1="217" y1="180" x2="276" y2="292" stroke="#CBD5E1" stroke-width="1.5" stroke-dasharray="5 4" marker-end="url(#hub-arr)"/>
 
-                        <!-- Puntos animados hacia el centro -->
-                        <circle r="4" fill="#F28C28" opacity="0.9">
-                            <animateMotion path="M 180,80 L 180,135" dur="1.8s" repeatCount="indefinite" begin="0s"/>
+                        <!-- Dot: Programa → GC -->
+                        <circle r="4.5" fill="#F28C28">
+                            <animateMotion path="M82,180 L143,180" dur="1.5s" repeatCount="indefinite" begin="0s"/>
                         </circle>
-                        <circle r="4" fill="#F28C28" opacity="0.9">
-                            <animateMotion path="M 275,149 L 223,166" dur="1.8s" repeatCount="indefinite" begin="0.36s"/>
+                        <!-- Dot: GC → Subcontratos -->
+                        <circle r="3.5" fill="#F28C28" opacity="0.9">
+                            <animateMotion path="M217,180 L276,68" dur="1.3s" repeatCount="indefinite" begin="0.5s"/>
                         </circle>
-                        <circle r="4" fill="#F28C28" opacity="0.9">
-                            <animateMotion path="M 238,261 L 206,216" dur="1.8s" repeatCount="indefinite" begin="0.72s"/>
+                        <!-- Dot: GC → Materiales -->
+                        <circle r="3.5" fill="#F28C28" opacity="0.9">
+                            <animateMotion path="M217,180 L276,180" dur="1.3s" repeatCount="indefinite" begin="0.9s"/>
                         </circle>
-                        <circle r="4" fill="#F28C28" opacity="0.9">
-                            <animateMotion path="M 122,261 L 154,216" dur="1.8s" repeatCount="indefinite" begin="1.08s"/>
-                        </circle>
-                        <circle r="4" fill="#F28C28" opacity="0.9">
-                            <animateMotion path="M 85,149 L 137,166" dur="1.8s" repeatCount="indefinite" begin="1.44s"/>
+                        <!-- Dot: GC → Certificaciones -->
+                        <circle r="3.5" fill="#F28C28" opacity="0.9">
+                            <animateMotion path="M217,180 L276,292" dur="1.3s" repeatCount="indefinite" begin="1.3s"/>
                         </circle>
                     </svg>
 
-                    <!-- Centro: logo -->
+                    <!-- Centro: logo GestraCOO -->
                     <div class="hub-center">
                         <img src="imagenes/Logos - Gestracoo.png" alt="GestraCOO">
                     </div>
 
-                    <!-- Nodo 1: Avances (arriba) -->
+                    <!-- ENTRADA: Nodo Programa de Obra (izquierda) -->
                     <div class="hub-node hub-n1">
                         <div class="hub-node-inner" style="animation-delay:0s">
-                            <div class="hub-face hub-front"><i data-lucide="trending-up" class="hub-icon"></i><span>Avances</span></div>
-                            <div class="hub-face hub-back"><i data-lucide="trending-up" class="hub-icon"></i><span>Avances</span></div>
+                            <div class="hub-face hub-front"><i data-lucide="calendar-days" class="hub-icon"></i><span>Programa</span></div>
+                            <div class="hub-face hub-back"><i data-lucide="calendar-days" class="hub-icon"></i><span>Programa</span></div>
                         </div>
                     </div>
 
-                    <!-- Nodo 2: Programa (arriba-derecha) -->
+                    <!-- SALIDA: Subcontratos (arriba-derecha) -->
                     <div class="hub-node hub-n2">
-                        <div class="hub-node-inner" style="animation-delay:0.8s">
-                            <div class="hub-face hub-front"><i data-lucide="calendar" class="hub-icon"></i><span>Programa</span></div>
-                            <div class="hub-face hub-back"><i data-lucide="calendar" class="hub-icon"></i><span>Programa</span></div>
+                        <div class="hub-node-inner" style="animation-delay:0.6s">
+                            <div class="hub-face hub-front"><i data-lucide="users" class="hub-icon"></i><span>Subcontr.</span></div>
+                            <div class="hub-face hub-back"><i data-lucide="users" class="hub-icon"></i><span>Subcontr.</span></div>
                         </div>
                     </div>
 
-                    <!-- Nodo 3: Materiales (abajo-derecha) -->
+                    <!-- SALIDA: Materiales (derecha centro) -->
                     <div class="hub-node hub-n3">
-                        <div class="hub-node-inner" style="animation-delay:1.6s">
+                        <div class="hub-node-inner" style="animation-delay:1.2s">
                             <div class="hub-face hub-front"><i data-lucide="package" class="hub-icon"></i><span>Materiales</span></div>
                             <div class="hub-face hub-back"><i data-lucide="package" class="hub-icon"></i><span>Materiales</span></div>
                         </div>
                     </div>
 
-                    <!-- Nodo 4: Certificaciones (abajo-izquierda) -->
+                    <!-- SALIDA: Certificaciones (abajo-derecha) -->
                     <div class="hub-node hub-n4">
-                        <div class="hub-node-inner" style="animation-delay:2.4s">
+                        <div class="hub-node-inner" style="animation-delay:1.8s">
                             <div class="hub-face hub-front"><i data-lucide="shield-check" class="hub-icon"></i><span>Certific.</span></div>
                             <div class="hub-face hub-back"><i data-lucide="shield-check" class="hub-icon"></i><span>Certific.</span></div>
                         </div>
                     </div>
 
-                    <!-- Nodo 5: Subcontratos (arriba-izquierda) -->
-                    <div class="hub-node hub-n5">
-                        <div class="hub-node-inner" style="animation-delay:3.2s">
-                            <div class="hub-face hub-front"><i data-lucide="layers" class="hub-icon"></i><span>Subcontr.</span></div>
-                            <div class="hub-face hub-back"><i data-lucide="layers" class="hub-icon"></i><span>Subcontr.</span></div>
-                        </div>
-                    </div>
-
                 </div>
 
-                <!-- HUB MOBILE: fila de nodos arriba → logo abajo centro -->
+                <!-- HUB MOBILE: Programa arriba → GC centro → 3 salidas abajo -->
                 <div class="hub-mobile-layout">
-                    <svg class="hub-m-svg" viewBox="0 0 320 210" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <!-- Líneas de cada nodo al logo -->
-                        <line x1="32"  y1="38" x2="160" y2="155" stroke="#E2E8F0" stroke-width="1.5"/>
-                        <line x1="96"  y1="38" x2="160" y2="155" stroke="#E2E8F0" stroke-width="1.5"/>
-                        <line x1="160" y1="38" x2="160" y2="155" stroke="#E2E8F0" stroke-width="1.5"/>
-                        <line x1="224" y1="38" x2="160" y2="155" stroke="#E2E8F0" stroke-width="1.5"/>
-                        <line x1="288" y1="38" x2="160" y2="155" stroke="#E2E8F0" stroke-width="1.5"/>
-                        <!-- Puntos animados hacia el logo -->
-                        <circle r="4" fill="#F28C28" opacity="0.9"><animateMotion path="M 32,38 L 160,155" dur="1.6s" repeatCount="indefinite" begin="0s"/></circle>
-                        <circle r="4" fill="#F28C28" opacity="0.9"><animateMotion path="M 96,38 L 160,155" dur="1.6s" repeatCount="indefinite" begin="0.32s"/></circle>
-                        <circle r="4" fill="#F28C28" opacity="0.9"><animateMotion path="M 160,38 L 160,155" dur="1.6s" repeatCount="indefinite" begin="0.64s"/></circle>
-                        <circle r="4" fill="#F28C28" opacity="0.9"><animateMotion path="M 224,38 L 160,155" dur="1.6s" repeatCount="indefinite" begin="0.96s"/></circle>
-                        <circle r="4" fill="#F28C28" opacity="0.9"><animateMotion path="M 288,38 L 160,155" dur="1.6s" repeatCount="indefinite" begin="1.28s"/></circle>
+                    <svg class="hub-m-svg" viewBox="0 0 320 260" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <!-- Programa → GC -->
+                        <line x1="160" y1="58" x2="160" y2="110" stroke="#E2E8F0" stroke-width="1.5" stroke-dasharray="4 3"/>
+                        <!-- GC → Subcontratos -->
+                        <line x1="140" y1="155" x2="48"  y2="210" stroke="#E2E8F0" stroke-width="1.5" stroke-dasharray="4 3"/>
+                        <!-- GC → Materiales -->
+                        <line x1="160" y1="155" x2="160" y2="210" stroke="#E2E8F0" stroke-width="1.5" stroke-dasharray="4 3"/>
+                        <!-- GC → Certificaciones -->
+                        <line x1="180" y1="155" x2="272" y2="210" stroke="#E2E8F0" stroke-width="1.5" stroke-dasharray="4 3"/>
+                        <!-- Dots: Programa → GC -->
+                        <circle r="4" fill="#F28C28" opacity="0.9"><animateMotion path="M160,58 L160,110" dur="1.4s" repeatCount="indefinite" begin="0s"/></circle>
+                        <!-- Dots: GC → salidas -->
+                        <circle r="3" fill="#F28C28" opacity="0.85"><animateMotion path="M140,155 L48,210" dur="1.2s" repeatCount="indefinite" begin="0.4s"/></circle>
+                        <circle r="3" fill="#F28C28" opacity="0.85"><animateMotion path="M160,155 L160,210" dur="1.2s" repeatCount="indefinite" begin="0.7s"/></circle>
+                        <circle r="3" fill="#F28C28" opacity="0.85"><animateMotion path="M180,155 L272,210" dur="1.2s" repeatCount="indefinite" begin="1.0s"/></circle>
                     </svg>
 
-                    <!-- Nodo 1: Avances -->
-                    <div class="hub-mn hub-mn-1">
+                    <!-- Programa (arriba centro) -->
+                    <div class="hub-mn hub-mn-top">
                         <div class="hub-mn-inner" style="animation-delay:0s">
-                            <div class="hub-mn-front"><i data-lucide="trending-up" class="hub-mn-icon"></i><span>Avances</span></div>
-                            <div class="hub-mn-back"><i data-lucide="trending-up" class="hub-mn-icon"></i><span>Avances</span></div>
+                            <div class="hub-mn-front"><i data-lucide="calendar-days" class="hub-mn-icon"></i><span>Programa</span></div>
+                            <div class="hub-mn-back"><i data-lucide="calendar-days" class="hub-mn-icon"></i><span>Programa</span></div>
                         </div>
                     </div>
-                    <!-- Nodo 2: Programa -->
-                    <div class="hub-mn hub-mn-2">
-                        <div class="hub-mn-inner" style="animation-delay:0.8s">
-                            <div class="hub-mn-front"><i data-lucide="calendar" class="hub-mn-icon"></i><span>Prog.</span></div>
-                            <div class="hub-mn-back"><i data-lucide="calendar" class="hub-mn-icon"></i><span>Prog.</span></div>
+                    <!-- Subcontratos (abajo izquierda) -->
+                    <div class="hub-mn hub-mn-bl">
+                        <div class="hub-mn-inner" style="animation-delay:0.6s">
+                            <div class="hub-mn-front"><i data-lucide="users" class="hub-mn-icon"></i><span>Subcontr.</span></div>
+                            <div class="hub-mn-back"><i data-lucide="users" class="hub-mn-icon"></i><span>Subcontr.</span></div>
                         </div>
                     </div>
-                    <!-- Nodo 3: Materiales -->
-                    <div class="hub-mn hub-mn-3">
-                        <div class="hub-mn-inner" style="animation-delay:1.6s">
+                    <!-- Materiales (abajo centro) -->
+                    <div class="hub-mn hub-mn-bc">
+                        <div class="hub-mn-inner" style="animation-delay:1.2s">
                             <div class="hub-mn-front"><i data-lucide="package" class="hub-mn-icon"></i><span>Mater.</span></div>
                             <div class="hub-mn-back"><i data-lucide="package" class="hub-mn-icon"></i><span>Mater.</span></div>
                         </div>
                     </div>
-                    <!-- Nodo 4: Certificaciones -->
-                    <div class="hub-mn hub-mn-4">
-                        <div class="hub-mn-inner" style="animation-delay:2.4s">
-                            <div class="hub-mn-front"><i data-lucide="shield-check" class="hub-mn-icon"></i><span>Cert.</span></div>
-                            <div class="hub-mn-back"><i data-lucide="shield-check" class="hub-mn-icon"></i><span>Cert.</span></div>
-                        </div>
-                    </div>
-                    <!-- Nodo 5: Subcontratos -->
-                    <div class="hub-mn hub-mn-5">
-                        <div class="hub-mn-inner" style="animation-delay:3.2s">
-                            <div class="hub-mn-front"><i data-lucide="layers" class="hub-mn-icon"></i><span>Subc.</span></div>
-                            <div class="hub-mn-back"><i data-lucide="layers" class="hub-mn-icon"></i><span>Subc.</span></div>
+                    <!-- Certificaciones (abajo derecha) -->
+                    <div class="hub-mn hub-mn-br">
+                        <div class="hub-mn-inner" style="animation-delay:1.8s">
+                            <div class="hub-mn-front"><i data-lucide="shield-check" class="hub-mn-icon"></i><span>Certific.</span></div>
+                            <div class="hub-mn-back"><i data-lucide="shield-check" class="hub-mn-icon"></i><span>Certific.</span></div>
                         </div>
                     </div>
                     <!-- Logo centro abajo -->
