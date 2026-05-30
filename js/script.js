@@ -185,7 +185,7 @@ if (paisSelect && countryCode) {
 }
 
 // ── Form submission ───────────────────────────────────────────
-const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwWGKQqaVNKsxjMBj4Uo9zIXMJk3EgCiC9uddpWi4Vtu2NUpEm6aJ10H2nUaoLdDnix/exec';
+const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxXbcMgVJYTef_SR00ID-jWC_8E1V89BUuVVmXCW1cT1DSC1XPWg22ClCc11rko2W2P/exec';
 
 document.getElementById('beta-form').addEventListener('submit', async (e) => {
   e.preventDefault();
@@ -207,7 +207,6 @@ document.getElementById('beta-form').addEventListener('submit', async (e) => {
     correo:  document.getElementById('correo').value,
     pais,
     telefono: countryCode.textContent + ' ' + document.getElementById('telefono').value,
-    plan:    document.getElementById('plan').value,
     empresa: document.getElementById('empresa').value,
     fecha:   new Date().toLocaleString('es-CL'),
   };

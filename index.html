@@ -96,11 +96,6 @@
                 "name": "GestraCOO",
                 "applicationCategory": "BusinessApplication",
                 "operatingSystem": "Web Browser",
-                "offers": [
-                    { "@type": "Offer", "name": "Plan Individual", "price": "2", "priceCurrency": "CLF", "priceValidUntil": "2026-12-31", "availability": "https://schema.org/InStock" },
-                    { "@type": "Offer", "name": "Plan Equipo", "price": "6", "priceCurrency": "CLF", "priceValidUntil": "2026-12-31", "availability": "https://schema.org/InStock" },
-                    { "@type": "Offer", "name": "Plan Empresa", "price": "Personalizado", "priceCurrency": "CLF", "availability": "https://schema.org/InStock" }
-                ],
                 "aggregateRating": { "@type": "AggregateRating", "ratingValue": "5", "ratingCount": "8", "bestRating": "5", "worstRating": "1" },
                 "description": "Software de gestión de subcontratos, control de materiales y planificación de obras para constructoras",
                 "featureList": ["Gestión de subcontratos","Control de materiales","Planificación de obras","Ruta crítica automatizada","Reportes en tiempo real","Documentación centralizada"]
@@ -140,13 +135,12 @@
             <li><a href="#ia" class="hover:text-gc-dark transition-colors">IA</a></li>
             <li><a href="#proposito" class="hover:text-gc-dark transition-colors">Propósito</a></li>
             <li><a href="#modulos" class="hover:text-gc-dark transition-colors">Módulos</a></li>
-            <li><a href="pages/planes.html" class="hover:text-gc-dark transition-colors">Planes</a></li>
         </ul>
 
         <!-- CTA + Hamburger -->
         <div class="flex items-center gap-3">
             <button id="nav-cta-btn" class="hidden md:inline-flex items-center gap-1 bg-gc-orange hover:bg-gc-orange-dark text-white text-sm font-semibold px-5 py-2 rounded-full transition-colors">
-                Empieza hoy →
+                Agendar reunión →
             </button>
             <button id="hamburger" class="md:hidden flex flex-col gap-1.5 p-2" aria-label="Menú">
                 <span class="hamburger-line block w-6 h-0.5 bg-gc-dark transition-all duration-300"></span>
@@ -163,10 +157,9 @@
             <li><a href="#ia" class="block py-2 border-b border-slate-100">IA</a></li>
             <li><a href="#proposito" class="block py-2 border-b border-slate-100">Propósito</a></li>
             <li><a href="#modulos" class="block py-2 border-b border-slate-100">Módulos</a></li>
-            <li><a href="pages/planes.html" class="block py-2 border-b border-slate-100">Planes</a></li>
             <li>
                 <button id="mobile-cta-btn" class="w-full bg-gc-orange text-white font-semibold py-3 rounded-full mt-2">
-                    Empieza hoy →
+                    Agendar reunión →
                 </button>
             </li>
         </ul>
@@ -202,7 +195,7 @@
 
             <div class="gs-reveal">
                 <button id="hero-cta-btn" class="inline-flex items-center gap-2 bg-gc-orange hover:bg-gc-orange-dark text-white font-bold text-lg px-8 py-4 rounded-full transition-all duration-300 hover:scale-105 hover:shadow-xl hover:shadow-gc-orange/30">
-                    Empieza hoy →
+                    Agendar reunión →
                 </button>
             </div>
         </div>
@@ -537,7 +530,7 @@
                 </div>
                 <h3 class="gs-reveal text-xl md:text-2xl font-extrabold text-gc-dark leading-tight mb-4">Terreno y oficina, en tiempo real</h3>
                 <p class="gs-reveal text-sm text-slate-500 leading-relaxed mb-3">El equipo en obra registra el avance de cada partida desde el celular. Sin esperar el informe del lunes ni perseguir a nadie por teléfono: tú ves el estado real del proyecto en tiempo real.</p>
-                <p class="gs-reveal text-sm text-slate-500 leading-relaxed">La calidad se registra en el mismo flujo: protocolos, ensayes e inspecciones con evidencia fotográfica y firma digital desde terreno. Cada partida queda respaldada antes de que alguien la necesite.</p>
+                <p class="gs-reveal text-sm text-slate-500 leading-relaxed">La calidad entra como observación directa en el programa: cada partida puede tener sus observaciones registradas según el avance, dejando trazabilidad de lo que se revisó y lo que falta resolver.</p>
             </div>
             <div class="gs-reveal flex items-center justify-center">
                 <div class="relative w-full max-w-lg pb-14">
@@ -587,8 +580,8 @@
                 <div class="gs-reveal inline-flex items-center gap-2 text-gc-orange text-xs font-semibold tracking-widest uppercase mb-4">
                     <i data-lucide="shield-check" class="lc-badge"></i><span>05 — Certificaciones · Recepción municipal</span>
                 </div>
-                <h3 class="gs-reveal text-xl md:text-2xl font-extrabold text-gc-dark leading-tight mb-4">Recepción municipal sin sorpresas de última hora</h3>
-                <p class="gs-reveal text-sm text-slate-500 leading-relaxed">Cada certificado, protocolo y ensaye organizado y vigente en la plataforma. Cuando llegue la inspección municipal, todo está ordenado, trazable y listo. Sin búsquedas de papel, sin correos de último minuto.</p>
+                <h3 class="gs-reveal text-xl md:text-2xl font-extrabold text-gc-dark leading-tight mb-4">Control de certificaciones para recepcionar el proyecto</h3>
+                <p class="gs-reveal text-sm text-slate-500 leading-relaxed">Gestiona y controla cada certificado, protocolo y ensaye directamente en la plataforma. Cuando una partida del programa se marca como terminada, puedes certificarla de inmediato: el avance y la documentación avanzan juntos. Al llegar la inspección municipal, todo está trazable, vigente y ordenado.</p>
             </div>
         </div>
 
@@ -610,7 +603,7 @@
         </p>
         <div class="gs-reveal">
             <button id="cta-final-btn" class="inline-flex items-center gap-2 bg-gc-orange hover:bg-gc-orange-dark text-white font-bold text-lg px-7 md:px-10 py-4 rounded-full transition-all duration-300 hover:scale-105 hover:shadow-xl hover:shadow-gc-orange/30">
-                Empieza hoy →
+                Agendar reunión →
             </button>
         </div>
     </div>
@@ -654,8 +647,8 @@
 <div id="beta-modal" class="modal-overlay">
     <div class="modal-box">
         <button class="modal-close absolute top-4 right-4 text-slate-400 hover:text-slate-600 text-2xl leading-none">&times;</button>
-        <h2 class="text-2xl font-bold text-gc-dark mb-1">Solicita tus 14 Días Gratis</h2>
-        <p class="modal-description text-slate-500 text-sm mb-6">Nuestro equipo se pondrá en contacto contigo para activar tu prueba gratuita.</p>
+        <h2 class="text-2xl font-bold text-gc-dark mb-1">Agenda tu reunión - Demo</h2>
+        <p class="modal-description text-slate-500 text-sm mb-6">Déjanos tus datos y te contactamos para coordinar la reunión.</p>
         <form id="beta-form" class="flex flex-col gap-4">
             <div class="form-field">
                 <label>Nombre completo *</label>
@@ -693,19 +686,10 @@
                 </div>
             </div>
             <div class="form-field">
-                <label>Plan de interés *</label>
-                <select id="plan" name="plan" required>
-                    <option value="">Selecciona el plan</option>
-                    <option value="Plan Individual">Plan Individual (2 UF/usuario/mes)</option>
-                    <option value="Plan Equipo">Plan Equipo (6 UF/usuario/mes) — Más Popular</option>
-                    <option value="Plan Empresa">Plan Empresa (Personalizado)</option>
-                </select>
-            </div>
-            <div class="form-field">
                 <label>Empresa *</label>
                 <input type="text" id="empresa" name="empresa" required placeholder="Nombre de tu empresa">
             </div>
-            <button type="submit" class="form-submit-btn">Solicitar 14 días gratis</button>
+            <button type="submit" class="form-submit-btn">Agendar reunión</button>
         </form>
     </div>
 </div>
